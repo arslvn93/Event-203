@@ -1,168 +1,176 @@
 const config = {
   "meta": {
-    "pageTitle": "Toronto Home Sellers Workshop - Limited Spots Available",
-    "description": "Free 90-minute workshop for Toronto homeowners. Learn insider secrets to get buyers flooding through your door and sell for top dollar.",
-    "keywords": "Toronto real estate, home selling workshop, real estate event, home sellers"
+    "pageTitle": "First Time Buyer Blueprint - Online Workshop for Homeownership",
+    "description": "Unlock the secrets to buying your first home in Brantford, Norfolk, & Haldimand Counties. Join our FREE online workshop for A-Z guidance and expert tips!",
+    "keywords": "first time buyer, homeownership, Brantford, Norfolk County, Haldimand County, real estate workshop, mortgage tips, home inspector, free webinar, Alex deVries, Georgia Spratt-Mallick"
   },
   "event": {
-    "title": "Express Lane To Home Selling",
-    "date": "Wednesday, July 9th, 2025",
-    "time": "6:30 PM",
-    "location": "Downtown Toronto, King & Spadina Area",
-    "locationNote": "(location released after registration)",
+    "title": "First Time Buyer Blueprint",
+    "date": "Details sent after registration",
+    "time": "Details sent after registration",
+    "location": "Online Webinar",
+    "locationNote": "Event link and details sent upon registration",
     "totalSpots": 25,
     "spotsLeft": 23,
     "duration": "90 minutes",
     "cost": "FREE"
   },
   "header": {
-    "eventDate": "Wednesday, July 9th, 2025 at 6:30 PM",
-    "spotsAvailable": "Only 23 25 Spots Available",
-    "ctaText": "Claim Your Free Spot"
+    "eventDate": "Live Online Workshop - Details Sent After Registration",
+    "spotsAvailable": "Only 23 <span class='strikethrough'>25</span> Spots Available",
+    "ctaText": "CLAIM YOUR FREE SPOT"
   },
   "hero": {
-    "badge": "🚨Exclusive Event For Mississauga Home Buyers🚨",
-    "headline": "Learn Why Most Toronto Homes Get <span class='highlight'>Completely Ignored By Buyers</span>... While Certain Sellers <span class='highlight'>Get Bidding Wars And Top Dollar Sales</span> - <em>For Free In Under 90 Mins</em>",
-    "subtitle": "If you're <strong>planning to sell In The Next 24 Months</strong> and worried about sitting empty with <em>zero showings</em>, this <strong>free 90-minute event</strong> reveals the \"insider secrets\" that get <em>buyers flooding through your door.</em> Meet 5 industry experts who'll show you exactly <strong>what Your Home Is Worth</strong> and walk away with your personal game plan to <strong>get buyers fighting over your house.</strong>",
-    "ctaText": "Claim Your Free Spot",
-    "ctaSubtext": "Food & Drink Included",
-    "urgencyText": "Only 23 25 Spots Left!<br>Don't miss out!"
+    "badge": "Exclusive Online Event For First-Time Buyers",
+    "headline": "Learn The <span class='highlight'>A-Z Blueprint</span> To Buying Your First Home... And Discover You're <span class='highlight'>Closer Than You Think!</span> - <em>Totally Free Online</em>",
+    "subtitle": "If you're a first-time buyer in Brantford, Brant County, Norfolk County, or Haldimand County, and tired of feeling <strong>overwhelmed or unsure where to start</strong>, this <strong>free 90-minute online workshop</strong> reveals the simple steps to confidently unlock homeownership.",
+    "ctaText": "SECURE MY FREE SPOT",
+    "ctaSubtext": null,
+    "urgencyText": "Spots are limited to keep it interactive. Register now!"
   },
   "eventDetails": {
-    "sectionTitle": "Ready To Learn How To Get Your Home Sold? Secure Your Seat Below",
-    "ctaText": "Claim Your Free Spot",
-    "foodIncluded": "food & drink included"
+    "sectionTitle": "Ready To Discover Your Path To Homeownership? Secure Your Spot Below",
+    "ctaText": "CLAIM MY FREE SPOT",
+    "foodIncluded": null
   },
   "problems": {
-    "title": "Dear Frustrated Toronto Homeowner",
+    "title": "Dear Aspiring Homeowner In Brantford & Surrounding Areas,",
     "items": [
-      "You're <strong>WATCHING</strong> other homes get zero showings while prices keep dropping across Toronto",
-      "You're <strong>TERRIFIED</strong> you'll be forced to sell for way less than your house is worth",
-      "You're <strong>STRESSED</strong> about spending money fixing things when you're not even sure your house will sell",
-      "And you're <strong>SICK</strong> of getting different advice from everyone when you just need to know what actually works"
+      "You're <strong>OVERWHELMED</strong> by all the different steps to buy a home and don't know where to begin.",
+      "You're <strong>WORRIED</strong> you don't have enough saved for a down payment or won't qualify for a mortgage.",
+      "You're <strong>CONFUSED</strong> by conflicting information online and need clear, expert guidance.",
+      "You're <strong>FRUSTRATED</strong> seeing home prices rise and fear you'll never own a home.",
+      "And you're <strong>TIRED</strong> of guessing what your next steps should be."
     ]
   },
-  "successStatement": "Yet, We're Getting Our Sellers Flooded With Buyers And Full-Price Offers While Other Homes Sit Dead On The Market!",
+  "successStatement": "Yet, we're helping first-time buyers like you get educated, feel confident, and make smart moves toward their dream home!",
   "solutions": {
-    "title": "Why Our \"Express Lane To Home Selling\" Event Is <em>THE BEST Path</em> To Success..",
+    "title": "Here's What You'll Learn In This Exclusive First-Time Buyer Blueprint Webinar:",
     "items": [
-      "<strong>DISCOVER</strong> the 3 secrets that get buyers flooding through your door (while others sit empty)",
-      "<strong>LEARN</strong> which $500 fixes add $15,000+ to your sale price (and which ones waste money)",
-      "<strong>GET</strong> the exact pricing strategy that triggers multiple offers in this market",
-      "<strong>WALK AWAY</strong> knowing exactly what to do tomorrow to start getting showings",
-      "<strong>PAY NOTHING</strong> and leave with a complete roadmap to sell fast for top dollar",
-      "<strong>TOTALLY FREE</strong> (plus we'll feed you while you learn)"
+      "<strong>DISCOVER</strong> the full A-Z process of buying your first home, broken down into simple steps.",
+      "<strong>LEARN</strong> how to assess your finances and understand mortgage options from a top expert.",
+      "<strong>GET</strong> helpful tips on navigating common pain points and avoiding costly mistakes.",
+      "<strong>WALK AWAY</strong> knowing exactly what you need to do to start your homeownership journey.",
+      "<strong>RECEIVE</strong> an exclusive workbook to guide you through your home-buying plan.",
+      "<strong>PAY NOTHING</strong> and leave with clarity, value, and guidance for your future."
     ]
   },
   "targetAudience": {
-    "title": "Who Is This Event For?",
+    "title": "Who Is This Online Event For?",
     "items": [
-      "You're <strong>PLANNING</strong> to sell within 24 months and want to be prepared (not panicked)",
-      "You're <strong>TIRED</strong> of guessing what your house is worth or what fixes to make",
-      "You're <strong>OVERWHELMED</strong> by all the different steps to sell a house",
-      "You're <strong>UNSURE</strong> which home improvements will pay off and which are a waste",
-      "You want <strong>REAL ADVICE</strong> from experts (not random tips from the internet)"
+      "You're a <strong>FIRST-TIME BUYER</strong> in Brantford, Brant County, Norfolk County, or Haldimand County, eager to get into the market.",
+      "You're <strong>LOOKING FOR CLARITY</strong> on the home-buying process, from start to finish.",
+      "You're <strong>CONCERNED</strong> about mortgages, down payments, or unexpected costs.",
+      "You want <strong>EXPERT ADVICE</strong> from real estate professionals, a mortgage agent, and a home inspector.",
+      "You're ready to <strong>STOP RENTING</strong> and start building equity."
     ],
-    "note": "...And perfect even if selling is still months away (there is no commitment required)"
+    "note": "...And perfect even if you're just starting to explore your options (there is no commitment required)."
   },
   "comparison": {
     "painfulWay": {
-      "title": "The PAINFUL Way (Most People)",
-      "subtitle": "Here's what people normally do..",
+      "title": "The PAINFUL Way (Going It Alone)",
+      "subtitle": "Here's what most first-time buyers do...",
       "points": [
-        "<strong>Book multiple one-off appointments</strong> with agents, stagers, contractors, and photographers—dragging it out for weeks or months.",
-        "<strong>Get conflicting advice</strong> from social media, online forums, and well-meaning friends.",
-        "<strong>Waste hours online researching</strong> comparable sales, renovation costs, and market trends—with no real clarity."
+        "<strong>Spend hours confused</strong> by conflicting online articles and social media advice, leading to more questions than answers.",
+        "<strong>Make assumptions</strong> about their financial readiness, only to be surprised by hidden costs or mortgage requirements.",
+        "<strong>Feel isolated and stressed</strong> by the weight of such a big decision, without a trusted team to guide them.",
+        "<strong>Risk missing out</strong> on great opportunities because they're unsure how to act decisively."
       ]
     },
     "expressWay": {
-      "title": "THE EXPRESS LANE WAY (You)",
-      "subtitle": "Here's what successful sellers do..",
+      "title": "THE EXPRESS LANE WAY (With Expert Guidance)",
+      "subtitle": "Here's what smart first-time buyers do...",
       "points": [
-        "<strong>Save Time</strong> by meeting all of the pros in one session and asking personalized questions.",
-        "<strong>Feel Confident</strong> in their pricing and strategy by getting advice from industry experts who are active in the market.",
-        "<strong>Interview To Make The Right Choice.</strong> Talk to multiple experts before making a final decision to ensure they are making the right choice."
+        "<strong>Gain clear, actionable steps</strong> for the entire home-buying process in one concise session.",
+        "<strong>Understand their true financial position</strong> with expert mortgage advice, setting realistic expectations.",
+        "<strong>Build a network of trusted professionals</strong> ready to support them at every stage of their journey.",
+        "<strong>Feel confident and empowered</strong> to make informed decisions and seize the right opportunities."
       ]
     }
   },
   "benefits": {
-    "title": "immerse yourself in This Live Event to finally feel confident selling your home.",
-    "subtitle": "At this live event you can look forward to:",
+    "title": "Immerse Yourself In This Live Online Event To Finally Feel Confident About Buying Your First Home.",
+    "subtitle": "At this live online event you can look forward to:",
     "items": [
       {
-        "title": "Real Numbers",
-        "description": "Understand exactly what your home is worth, what improvements add value, and how to price strategically."
+        "title": "A-Z Process Map",
+        "description": "Walk away with a clear, step-by-step guide to buying your first home, from saving to moving in."
       },
       {
-        "title": "Expert Clarity",
-        "description": "Get unfiltered advice from trusted pros who aren't trying to sell you anything."
+        "title": "Financial Clarity",
+        "description": "Understand your mortgage options, down payment strategies, and how to budget effectively for homeownership."
       },
       {
-        "title": "Confidence to Move Forward",
-        "description": "Walk away with clear next steps, whether you're ready to sell now or 6 months from now."
+        "title": "Expert Insights",
+        "description": "Get direct advice from real estate agents, a mortgage professional, and a home inspector, all in one place."
       },
       {
-        "title": "A Curated Support Team",
-        "description": "Build relationships with industry experts who can guide you when the time is right."
+        "title": "Confidence & Control",
+        "description": "Feel empowered to make informed decisions and navigate the market with a solid plan."
+      },
+      {
+        "title": "Exclusive Resources",
+        "description": "Receive a valuable workbook to help you track your progress and plan your home buying journey."
       }
     ]
   },
   "speakers": {
     "title": "Get A Sneak Peek Into The Event!",
-    "subtitle": "<strong>Meet Your Hosts & Experts —</strong> This isn't just another info session, it's your chance to connect directly with the experts who can help you sell your home the right way.",
+    "subtitle": "<strong>Meet Your Hosts & Expert Panel —</strong> This isn't just another info session, it's your chance to connect directly with the experts who can help you make your first home purchase a smooth success.",
     "experts": [
       {
-        "name": "Erica Reddy-Choquette & Sarah Meng",
-        "title": "Award-Winning Toronto Realtors",
-        "description": "Local market experts helping sellers maximize their home's value.",
+        "name": "Alex deVries",
+        "title": "REALTOR, Rise Realty Group (Co-Host)",
+        "description": "Local market expert dedicated to helping first-time buyers achieve their homeownership dreams with confidence and clarity.",
         "points": [
-          "Understand which Toronto neighbourhoods are hot right now—and pricing strategies that work",
-          "Learn how to position your home to sell quickly and avoid common listing mistakes"
+          "Demystify the local market in Brantford, Brant County, Norfolk County, & Haldimand County for first-time buyers.",
+          "Guide you through the entire buying process, from initial search to closing the deal."
         ]
       },
       {
-        "name": "Speaker Announcement Coming Soon",
-        "title": "Mortgage Broker",
-        "description": "Coordinate your sale and next purchase like a pro, without timing headaches.",
+        "name": "Georgia Spratt-Mallick",
+        "title": "REALTOR, Rise Realty Group (Co-Host)",
+        "description": "Passionate about providing exceptional real estate experiences, ensuring first-time buyers feel supported and informed.",
         "points": [
-          "Understand bridge loans, extended closings, and how to buy before you sell.",
-          "Learn how to avoid moving twice or ending up without a home."
+          "Share insider tips for navigating competitive offers and securing your ideal home.",
+          "Help you understand common contracts and legal aspects of home purchasing."
         ]
       },
       {
-        "name": "Speaker Announcement Coming Soon",
-        "title": "Staging Specialist",
-        "description": "Revealing which $500 improvements can add $15,000+ to your sale price",
+        "name": "Kendra Bartels",
+        "title": "Mortgage Agent (Guest Speaker)",
+        "description": "A trusted mortgage professional who simplifies the financing process, finding the best solutions for new homeowners.",
         "points": [
-          "Find out which improvements buyers actually care about — and which to skip.",
-          "Get a checklist of fast, affordable staging wins for every room in your home."
+          "Break down mortgage pre-approval, rates, and different financing options.",
+          "Provide personalized advice on how to strengthen your financial position for a home loan."
         ]
       },
       {
-        "name": "Speaker Announcement Coming Soon",
-        "title": "Handyman",
-        "description": "Fix what matters, skip what doesn't, straight from a seasoned pro.",
+        "name": "Jeff Gleeson",
+        "title": "Home Inspector (Guest Speaker)",
+        "description": "Experienced home inspector dedicated to educating buyers on a home's condition and potential future considerations.",
         "points": [
-          "Discover which low-cost repairs make your listing shine (and which are a waste).",
-          "Avoid red flags that scare buyers — without over-renovating."
+          "Explain the importance of a home inspection and what to look for.",
+          "Offer crucial insights into potential issues that could impact your home purchase."
         ]
       }
     ]
   },
   "eventSummary": {
-    "title": "Join Us LIVE For this Express Lane To Home Selling Live Event",
+    "title": "Join Us LIVE For This First Time Buyer Blueprint Online Event",
     "subtitle": "Here's everything to look forward to:",
-    "date": "Thursday, May 29, 2025 at 6:30 PM",
-    "location": "Downtown Toronto, King & Spadina Area",
+    "date": "Details sent after registration",
+    "location": "Online Webinar, Accessible From Anywhere!",
     "features": [
-      "Private access to industry experts all in one room: Staging Specialist, Mortgage Specialist, Handyman, Realtors",
-      "Action plan to move forward",
-      "Networking, snacks & beverages",
-      "Zero pressure, real answers"
+      "Access to a panel of industry experts: Realtors, Mortgage Specialist, and Home Inspector.",
+      "An interactive and hands-on format to build your personalized home-buying action plan.",
+      "Exclusive downloadable workbook to guide your journey.",
+      "Zero pressure, real answers, and actionable strategies.",
+      "Opportunity for Q&A with all our experts."
     ],
-    "ctaText": "Claim Your Free Spot",
-    "note": "join us live in person!",
-    "limitedOffer": "*Limited Time Offer*"
+    "ctaText": "CLAIM YOUR FREE SPOT NOW",
+    "note": "Don't miss this opportunity to gain clarity and confidence!",
+    "limitedOffer": "*Plus, register today for a chance to receive % off a home inspection!"
   },
   "faq": {
     "title": "Frequently asked questions.",
@@ -170,69 +178,63 @@ const config = {
     "questions": [
       {
         "question": "What is the format of the event?",
-        "answer": "You'll rotate through 5 stations (like speed dating), each with a different expert. There will be time before and after to mingle."
+        "answer": "This is an interactive online panel discussion featuring real estate experts, a mortgage agent, and a home inspector. You'll get comprehensive A-Z guidance."
       },
       {
-        "question": "Where is it?",
-        "answer": "Downtown Toronto. Address sent upon registration."
+        "question": "Where is it taking place?",
+        "answer": "It's an online webinar, so you can join from the comfort of your home anywhere in Brantford, Brant County, Norfolk County, or Haldimand County."
       },
       {
-        "question": "How long is it?",
-        "answer": "Roughly 90 minutes, starting at 6:30 PM."
+        "question": "How long is the workshop?",
+        "answer": "The workshop is designed to be approximately 90 minutes, packed with valuable information and expert insights."
       },
       {
         "question": "Is it really free?",
-        "answer": "Yes! Just bring your questions and curiosity. Drinks, snacks, and goodies are on us."
+        "answer": "Yes! This 'First Time Buyer Blueprint' online event is absolutely free. Our goal is to provide valuable education to aspiring homeowners."
       },
       {
-        "question": "Do I need to bring anything?",
-        "answer": "Just your phone and maybe a notepad. We'll handle the rest."
-      },
-      {
-        "question": "Can I bring a friend or partner?",
-        "answer": "Absolutely—just make sure they register separately as we only have room for 25 people."
-      },
-      {
-        "question": "What if I'm not ready to Sell yet?",
-        "answer": "That's okay! This is about getting prepared, not pressuring you to sell."
+        "question": "Do I need to prepare anything?",
+        "answer": "Just bring your questions and curiosity! We recommend having a pen and paper or a digital note-taking tool handy. We'll provide a workbook."
       },
       {
         "question": "How many spots are available?",
-        "answer": "We're capping it at 25 people to keep it personal. Register early—spots will go fast."
+        "answer": "We're capping attendance between 10-25 participants to ensure a personalized and interactive experience. Register early to secure your spot!"
+      },
+      {
+        "question": "What kind of giveaway is included?",
+        "answer": "All attendees will receive a valuable workbook for planning their home purchase, and we'll hopefully offer a percentage off a home inspection!"
+      },
+      {
+        "question": "I'm not ready to buy right now. Is this still for me?",
+        "answer": "Absolutely! This event is perfect for anyone planning to buy in the future. Getting educated now will help you make smarter decisions when you are ready."
       }
     ]
   },
   "registration": {
     "title": "Claim Your Spot Below",
-    "urgency": "Only 23 25 Spots Available",
-    "note": "Zero pressure, all value. Register for this free Toronto home selling event."
+    "urgency": "Only 23 <span class='strikethrough'>25</span> Spots Available",
+    "note": "Zero pressure, all value. Register for this free First Time Buyer Blueprint online event today."
   },
   "contact": {
     "agents": [
       {
-        "name": "Erica Reddy-Choquette",
-        "title": "Broker",
-        "phone": "416.587.2782",
-        "email": "arslan@salesgenius.co"
-      },
-      {
-        "name": "Sarah Meng",
-        "title": "Realtor",
-        "phone": "416-989-2879",
-        "email": "arslan@salesgenius.co"
+        "name": "Alex deVries",
+        "title": "REALTOR",
+        "phone": "5197551229",
+        "email": "alex@theriserealtygroup.ca"
       }
     ]
   },
   "footer": {
-    "brokerage": "Royal LePage Signature Realty, Brokerage*",
-    "address": "201-8 Sampson Mews, Toronto, ON, M3C 0H5",
-    "copyright": "© Copyright 2025. All rights reserved.",
-    "privacyPolicy": "https://ericareddy.com/privacy-policy/"
+    "brokerage": "Real Broker LTD",
+    "address": "218 Brant Avenue, Brantford ON N3T 3H9",
+    "copyright": "© 2025 Alex deVries. All rights reserved.",
+    "privacyPolicy": "https://theriserealtygroup.ca/"
   },
   "modalQuestions": [
     {
-      "id": "timeline",
-      "questionText": "When are you planning to sell your home?",
+      "id": "timeline_to_buy",
+      "questionText": "When are you planning to buy your first home?",
       "options": [
         {
           "value": "within_3_months",
@@ -257,54 +259,54 @@ const config = {
       ]
     },
     {
-      "id": "property_type",
-      "questionText": "What type of property do you own?",
+      "id": "biggest_concern_buying",
+      "questionText": "What's your biggest concern about buying your first home?",
       "options": [
         {
-          "value": "detached_house",
-          "text": "Detached House"
+          "value": "down_payment",
+          "text": "Saving for a down payment"
         },
         {
-          "value": "semi_detached",
-          "text": "Semi-Detached"
+          "value": "mortgage_qualification",
+          "text": "Qualifying for a mortgage"
         },
         {
-          "value": "townhouse",
-          "text": "Townhouse"
+          "value": "finding_right_home",
+          "text": "Finding the right home in my budget"
         },
         {
-          "value": "condo",
-          "text": "Condo/Apartment"
+          "value": "understanding_process",
+          "text": "Understanding the entire buying process"
         },
         {
-          "value": "duplex",
-          "text": "Duplex"
+          "value": "market_conditions",
+          "text": "Current market conditions and pricing"
         }
       ]
     },
     {
-      "id": "biggest_concern",
-      "questionText": "What's your biggest concern about selling?",
+      "id": "target_area",
+      "questionText": "Which area are you most interested in for your home search?",
       "options": [
         {
-          "value": "pricing_right",
-          "text": "Pricing it right"
+          "value": "brantford",
+          "text": "Brantford"
         },
         {
-          "value": "finding_buyers",
-          "text": "Finding interested buyers"
+          "value": "brant_county",
+          "text": "Brant County"
         },
         {
-          "value": "timing",
-          "text": "Timing the market"
+          "value": "norfolk_county",
+          "text": "Norfolk County"
         },
         {
-          "value": "repairs_staging",
-          "text": "Repairs and staging"
+          "value": "haldimand_county",
+          "text": "Haldimand County"
         },
         {
-          "value": "paperwork",
-          "text": "Legal paperwork and process"
+          "value": "not_sure_yet",
+          "text": "Not sure yet / Exploring all options"
         }
       ]
     }
@@ -335,6 +337,10 @@ const config = {
     "showSpotsCounter": true,
     "glassmorphicHeader": true
   },
-  "lastUpdated": "2025-07-04T20:16:49.085Z",
+  "lastUpdated": "2025-11-10T19:51:12.991Z",
   "updatedVia": "admin-panel"
 };
+// Export for use in other files
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = config;
+}
