@@ -22,8 +22,7 @@ const config = {
   },
   "hero": {
     "badge": "Exclusive Online Event For First-Time Buyers",
-    "headline": "The <span class='highlight'>A-Z Blueprint</span> To <em>Buying Your First Home</em>",
-    "subtitle": "If you're a first-time buyer in Brantford, Brant County, Norfolk County, or Haldimand County, and tired of feeling <strong>overwhelmed or unsure where to start</strong>, this <strong>free 90-minute online workshop</strong> reveals the simple steps to confidently unlock homeownership.",
+    "headline": "The <span class='highlight'>A-Z Blueprint</span> To <em>Buying Your First Home</em>",    "subtitle": "If you're a first-time buyer in Brantford, Brant County, Norfolk County, or Haldimand County, and tired of feeling <strong>overwhelmed or unsure where to start</strong>, this <strong>free 90-minute online workshop</strong> reveals the simple steps to confidently unlock homeownership.",
     "ctaText": "SECURE MY FREE SPOT",
     "ctaSubtext": null,
     "urgencyText": "Spots are limited to keep it interactive. Register now!"
@@ -122,6 +121,7 @@ const config = {
         "name": "Alex deVries",
         "title": "REALTOR, Rise Realty Group (Co-Host)",
         "description": "Local market expert dedicated to helping first-time buyers achieve their homeownership dreams with confidence and clarity.",
+        "headshotUrl": "https://theriserealtygroup.ca/wp-content/uploads/2024/02/Alex.png",
         "points": [
           "Demystify the local market in Brantford, Brant County, Norfolk County, & Haldimand County for first-time buyers.",
           "Guide you through the entire buying process, from initial search to closing the deal."
@@ -131,6 +131,7 @@ const config = {
         "name": "Georgia Spratt-Mallick",
         "title": "REALTOR, Rise Realty Group (Co-Host)",
         "description": "Passionate about providing exceptional real estate experiences, ensuring first-time buyers feel supported and informed.",
+        "headshotUrl": "https://theriserealtygroup.ca/wp-content/uploads/2024/06/Georgia.png",
         "points": [
           "Share insider tips for navigating competitive offers and securing your ideal home.",
           "Help you understand common contracts and legal aspects of home purchasing."
@@ -140,6 +141,7 @@ const config = {
         "name": "Kendra Bartels",
         "title": "Mortgage Agent (Guest Speaker)",
         "description": "A trusted mortgage professional who simplifies the financing process, finding the best solutions for new homeowners.",
+        "headshotUrl": "https://theriserealtygroup.ca/wp-content/uploads/2024/02/Ashley-Veldkam.png",
         "points": [
           "Break down mortgage pre-approval, rates, and different financing options.",
           "Provide personalized advice on how to strengthen your financial position for a home loan."
@@ -149,6 +151,7 @@ const config = {
         "name": "Jeff Gleeson",
         "title": "Home Inspector (Guest Speaker)",
         "description": "Experienced home inspector dedicated to educating buyers on a home's condition and potential future considerations.",
+        "headshotUrl": "https://theriserealtygroup.ca/wp-content/uploads/2024/03/Mask-group-79.png",
         "points": [
           "Explain the importance of a home inspection and what to look for.",
           "Offer crucial insights into potential issues that could impact your home purchase."
