@@ -3,611 +3,1018 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toronto Home Sellers Workshop - Limited Spots Available</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description" id="meta-description" content="">
+    <meta name="keywords" id="meta-keywords" content="">
+    <title>Secure Your Seat | Blueprint Workshop</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Oswald (Headlines) & Roboto (Body) - The "ClickFunnels" Standard -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- External Config -->
     <script src="config.js"></script>
+
+    <style>
+        :root {
+            --neon-green: #26ff79;
+            --dark-green: #0a2812;
+            --alert-red: #ff4d4d;
+            --gold-start: #FDB931;
+            --gold-end: #F79221;
+            --bg-dark: #080808;
+            --panel-bg: #121212;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* === THE "CONVERSION" BUTTON === */
+        .btn-pulse {
+            background: linear-gradient(to bottom, #ffe066 0%, #e6b800 100%);
+            border: 1px solid #fff;
+            border-bottom: 4px solid #b28f00;
+            border-radius: 6px;
+            color: #000;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-shadow: 0px 1px 0px rgba(255,255,255,0.4);
+            box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.4);
+            transition: all 0.15s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-pulse:hover {
+            transform: translateY(1px);
+            border-bottom-width: 3px;
+            filter: brightness(1.1);
+            box-shadow: 0px 0px 30px rgba(255, 215, 0, 0.6);
+        }
+        
+        .btn-pulse:active {
+            transform: translateY(4px);
+            border-bottom-width: 0px;
+        }
+
+        /* Shine Effect Animation */
+        .btn-pulse::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(45deg);
+            animation: buttonShine 3s infinite;
+        }
+
+        @keyframes buttonShine {
+            0% { left: -100%; opacity: 0; }
+            20% { left: 100%; opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+
+        /* === PROGRESS BAR === */
+        .progress-container {
+            width: 100%;
+            background-color: #333;
+            border-radius: 50px;
+            margin: 15px 0;
+            border: 1px solid #444;
+        }
+        .progress-bar {
+            width: 85%;
+            height: 12px;
+            background: repeating-linear-gradient(
+                45deg,
+                #dc2626,
+                #dc2626 10px,
+                #ef4444 10px,
+                #ef4444 20px
+            );
+            border-radius: 50px;
+            animation: progressMove 1s linear infinite;
+        }
+        @keyframes progressMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 0; }
+        }
+
+        /* === CARDS === */
+        .funnel-card {
+            background: var(--panel-bg);
+            border: 1px solid #222;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .highlight-text {
+            background-color: rgba(38, 255, 121, 0.15);
+            color: var(--neon-green);
+            padding: 0 4px;
+            border-radius: 2px;
+        }
+
+        /* === CHECKLISTS === */
+        .check-green i { color: var(--neon-green); }
+        .check-red i { color: var(--alert-red); }
+
+        /* === MODAL === */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+            z-index: 9999; display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+        /* === TITAN DESIGN SYSTEM === */
+        .titan-neon-border {
+            border: 1px solid rgba(38, 255, 121, 0.3);
+            box-shadow: 0 0 15px rgba(38, 255, 121, 0.1);
+            transition: all 0.3s ease;
+        }
+        .titan-neon-border:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 25px rgba(38, 255, 121, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .titan-stack-card {
+            background: linear-gradient(145deg, #111 0%, #050505 100%);
+            border: 1px solid #222;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .titan-truth-bomb {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #fff 0%, #aaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .titan-check-list li {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.2s ease;
+        }
+        .titan-check-list li:hover {
+            background: rgba(38, 255, 121, 0.05);
+            border-color: rgba(38, 255, 121, 0.2);
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="container">
-            <div class="event-date">
-                <i class="fas fa-calendar-alt"></i>
-                Wednesday, July 9th, 2025 at 6:30 PM
+
+    <!-- URGENCY BAR -->
+    <div class="fixed top-0 w-full z-50 bg-red-700 text-white text-center py-2 px-4 text-xs md:text-sm font-bold uppercase tracking-wide shadow-lg">
+        <i class="fas fa-exclamation-triangle mr-2 animate-pulse"></i> 
+        <span id="top-bar-text">Limited Spots Available For This Workshop</span>
+        <span class="hidden md:inline"> | </span>
+        <span class="block md:inline text-yellow-300" id="top-bar-spots"></span>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="pt-24 pb-16 px-4 bg-[url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000')] bg-cover bg-center relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-[#080808]"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            
+            <!-- Pre-Headline Authority -->
+            <div class="inline-block border border-gray-600 bg-gray-900/80 rounded-full px-4 py-1 text-xs font-bold text-gray-300 mb-6 uppercase tracking-widest" id="hero-badge">
+                Loading...
             </div>
-            <div class="spots-counter">
-                <span class="spots-left">Only <span class="number">23</span> <span class="strikethrough">25</span> Spots Available</span>
+
+            <!-- Headline -->
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold leading-tight text-white mb-6 drop-shadow-xl" id="hero-headline">
+                <!-- JS -->
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-lg md:text-2xl text-gray-300 font-light leading-relaxed mb-8 max-w-3xl mx-auto" id="hero-subtitle">
+                <!-- JS -->
+            </p>
+
+            <!-- Progress Bar Scarcity -->
+            <div class="max-w-md mx-auto mb-8">
+                <div class="flex justify-between text-xs font-bold uppercase text-gray-400 mb-1">
+                    <span>Registration Status</span>
+                    <span class="text-red-500">85% Full</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 85%;"></div>
+                </div>
             </div>
-            <a href="#registration" class="cta-button primary">Claim Your Free Spot</a>
+
+            <!-- HERO CTA -->
+            <button onclick="openModal()" class="btn-pulse text-2xl md:text-3xl px-12 py-6 w-full md:w-auto rounded-lg shadow-2xl animate-bounce-slow">
+                <span id="hero-cta">YES! RESERVE MY SEAT NOW</span>
+                <i class="fas fa-angle-double-right ml-3"></i>
+            </button>
+            
+            <p class="mt-4 text-xs text-gray-500 uppercase tracking-widest" id="hero-urgency-text">
+                <i class="fas fa-lock text-green-500"></i> 100% Free Class • No Credit Card Required
+            </p>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    🚨 Exclusive Event For Toronto Home Sellers 🚨
-                </div>
-                
-                <h1 class="hero-title">
-                    Learn Why Most Toronto Homes Get <span class="highlight">Completely Ignored By Buyers</span>... 
-                    While Certain Sellers <span class="highlight">Get Bidding Wars And Top Dollar Sales</span> - 
-                    <em>For Free In Under 90 Mins</em>
-                </h1>
-                
-                <p class="hero-subtitle">
-                    If you're <strong>planning to sell In The Next 24 Months</strong> and worried about sitting empty with 
-                    <em>zero showings</em>, this <strong>free 90-minute event</strong> reveals the "insider secrets" that get 
-                    <em>buyers flooding through your door.</em> Meet 5 industry experts who'll show you exactly 
-                    <strong>what Your Home Is Worth</strong> and walk away with your personal game plan to 
-                    <strong>get buyers fighting over your house.</strong>
-                </p>
-                
-                <div class="hero-image">
-                    <img src="https://pixabay.com/get/g0a9608e17eb3725b64294aa86b80d6587c1b45e722e4c9c9050b5e8873a1702bdf53edb64ad42e3c167f11c388a4d357d863a666b486c247b8319a05a2dcad11_1280.jpg" alt="Real estate presentation" class="main-image">
-                </div>
-                
-                <div class="cta-section">
-                    <a href="#registration" class="cta-button large">Claim Your Free Spot</a>
-                    <p class="cta-subtext">Food & Drink Included</p>
-                    <div class="urgency">
-                        <strong>Only 23 <span class="strikethrough">25</span> Spots Left!</strong>
-                        <br>Don't miss out!
-                    </div>
-                </div>
+    <!-- THE "PROBLEM" (Agitation) -->
+    <section class="py-16 px-4 bg-[#080808] border-b border-gray-900">
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-[#111] border-l-4 border-red-600 p-8 rounded-r-lg shadow-lg">
+                <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mb-6" id="problems-title"></h2>
+                <ul class="space-y-4 text-gray-300 text-lg" id="problems-list">
+                    <!-- JS -->
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Event Details Section -->
-    <section class="event-details">
-        <div class="container">
-            <div class="event-card">
-                <div class="event-info">
-                    <h2>Ready To Learn How To Get Your Home Sold? Secure Your Seat Below</h2>
-                    <div class="event-meta">
-                        <div class="date-time">
-                            <i class="fas fa-calendar"></i>
-                            Wednesday, Jul 9th, 2025 at 6:30 PM
-                        </div>
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Downtown Toronto, King & Spadina Area
-                            <small>(location released after registration)</small>
-                        </div>
-                        <div class="spots-warning">
-                            Only 23 <span class="strikethrough">25</span> spots Left
-                        </div>
-                    </div>
-                    <a href="#registration" class="cta-button">Claim Your Free Spot</a>
-                    <p class="food-included">food & drink included</p>
-                </div>
-                <div class="toronto-skyline">
-                    <img src="https://pixabay.com/get/g35acae7d9296dfd48d55684ce8a7349c37894525a97e485dacb84f47158ea586d224d80d78995a0cf77f00edc98a64256d2ea1e592e12bef7dd3d976c7e6aa18_1280.jpg" alt="Toronto skyline">
-                </div>
+    <!-- THE "SOLUTION" (3-Day Breakdown) -->
+    <section class="py-20 px-4 bg-[#050505]">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-white uppercase" id="solutions-title">
+                    Here Is The <span class="text-green-500 underline decoration-4 decoration-green-500/30">Exact Roadmap</span> We Will Follow
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6" id="roadmap-grid">
+                <!-- JS Injected -->
             </div>
         </div>
     </section>
 
-    <!-- Problem/Solution Section -->
-    <section class="problem-solution">
-        <div class="container">
-            <div class="frustrated-owner">
-                <h2>Dear Frustrated Toronto Homeowner</h2>
-                <div class="problems">
-                    <div class="problem">
-                        <i class="fas fa-times-circle"></i>
-                        <span class="nowrap">You're <strong>WATCHING</strong></span> other homes get zero showings while prices keep dropping across Toronto
+    <!-- THE "GAP" (Comparison Table) -->
+    <section class="py-20 px-4 bg-[#0c0c0c]">
+        <div class="max-w-5xl mx-auto">
+            <div class="funnel-card overflow-hidden">
+                <div class="grid grid-cols-2 text-center border-b border-gray-800">
+                    <div class="p-6 bg-red-900/20">
+                        <h3 class="text-2xl font-heading font-bold text-red-500" id="comparison-painful-title">THE HARD WAY</h3>
+                        <p class="text-xs text-red-400 opacity-70 uppercase" id="comparison-painful-subtitle">(Doing it alone)</p>
                     </div>
-                    <div class="problem">
-                        <i class="fas fa-times-circle"></i>
-                        <span class="nowrap">You're <strong>TERRIFIED</strong></span> you'll be forced to sell for way less than your house is worth
-                    </div>
-                    <div class="problem">
-                        <i class="fas fa-times-circle"></i>
-                        <span class="nowrap">You're <strong>STRESSED</strong></span> about spending money fixing things when you're not even sure your house will sell
-                    </div>
-                    <div class="problem">
-                        <i class="fas fa-times-circle"></i>
-                        <span class="nowrap">And you're <strong>SICK</strong></span> of getting different advice from everyone when you just need to know what actually works
+                    <div class="p-6 bg-green-900/20 border-l border-gray-800 relative">
+                        <div class="absolute top-0 right-0 bg-green-500 text-black text-[10px] font-bold px-2 py-1 uppercase">Recommended</div>
+                        <h3 class="text-2xl font-heading font-bold text-green-500" id="comparison-express-title">THE SMART WAY</h3>
+                        <p class="text-xs text-green-400 opacity-70 uppercase" id="comparison-express-subtitle">(With This Blueprint)</p>
                     </div>
                 </div>
-                
-                <h3 class="success-statement">
-                    Yet, We're Getting Our Sellers Flooded With Buyers And Full-Price Offers While Other Homes Sit Dead On The Market!
-                </h3>
-                
-                <h3>Why Our "Express Lane To Home Selling" Event Is <em>THE BEST Path</em> To Success..</h3>
-                <div class="solutions">
-                    <div class="solution">
-                        <i class="fas fa-check-circle"></i>
-                        <strong>DISCOVER</strong> the 3 secrets that get buyers flooding through your door (while others sit empty)
-                    </div>
-                    <div class="solution">
-                        <i class="fas fa-check-circle"></i>
-                        <strong>LEARN</strong> which $500 fixes add $15,000+ to your sale price (and which ones waste money)
-                    </div>
-                    <div class="solution">
-                        <i class="fas fa-check-circle"></i>
-                        <strong>GET</strong> the exact pricing strategy that triggers multiple offers in this market
-                    </div>
-                    <div class="solution">
-                        <i class="fas fa-check-circle"></i>
-                        <strong>WALK AWAY</strong> knowing exactly what to do tomorrow to start getting showings
-                    </div>
-                    <div class="solution">
-                        <i class="fas fa-check-circle"></i>
-                        <strong>PAY NOTHING</strong> and leave with a complete roadmap to sell fast for top dollar
-                    </div>
-                    <div class="solution">
-                        <i class="fas fa-check-circle"></i>
-                        <strong>TOTALLY FREE</strong> (plus we'll feed you while you learn)
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Target Audience Section -->
-    <section class="target-audience">
-        <div class="container">
-            <h2>Who Is This Event For?</h2>
-            <div class="audience-points">
-                <div class="audience-point">
-                    <i class="fas fa-finger-point"></i>
-                    You're <strong>PLANNING</strong> to sell within 24 months and want to be prepared (not panicked)
-                </div>
-                <div class="audience-point">
-                    <i class="fas fa-finger-point"></i>
-                    You're <strong>TIRED</strong> of guessing what your house is worth or what fixes to make
-                </div>
-                <div class="audience-point">
-                    <i class="fas fa-finger-point"></i>
-                    You're <strong>OVERWHELMED</strong> by all the different steps to sell a house
-                </div>
-                <div class="audience-point">
-                    <i class="fas fa-finger-point"></i>
-                    You're <strong>UNSURE</strong> which home improvements will pay off and which are a waste
-                </div>
-                <div class="audience-point">
-                    <i class="fas fa-finger-point"></i>
-                    You want <strong>REAL ADVICE</strong> from experts (not random tips from the internet)
-                </div>
-            </div>
-            <p class="audience-note">
-                <em>...And perfect even if selling is still months away (there is no commitment required)</em>
-            </p>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section class="comparison">
-        <div class="container">
-            <div class="comparison-grid">
-                <div class="painful-way">
-                    <h3>The PAINFUL Way (Most People)</h3>
-                    <h4>Here's what people normally do..</h4>
-                    <img src="https://pixabay.com/get/g2768f7af2a60762162b2dcd48aac6acf56a562e89356473ba52ce24005e9c0ac2e31fb500ef7cb51a87551539efc9c24d1fcda2606e60c702093ef11b68ca218_1280.jpg" alt="Stressed business meeting">
-                    <div class="painful-points">
-                        <div class="painful-point">
-                            <i class="fas fa-times"></i>
-                            <strong>Book multiple one-off appointments</strong> with agents, stagers, contractors, and photographers—dragging it out for weeks or months.
-                        </div>
-                        <div class="painful-point">
-                            <i class="fas fa-times"></i>
-                            <strong>Get conflicting advice</strong> from social media, online forums, and well-meaning friends.
-                        </div>
-                        <div class="painful-point">
-                            <i class="fas fa-times"></i>
-                            <strong>Waste hours online researching</strong> comparable sales, renovation costs, and market trends—with no real clarity.
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="express-way">
-                    <h3>THE EXPRESS LANE WAY (You)</h3>
-                    <h4>Here's what successful sellers do..</h4>
-                    <img src="https://pixabay.com/get/g18e560f94c9af6d0dc8f8ebe3ac13e2fd40cb10c6f1c9053259aeb3c149c2b27a27dbc4f1027cbd648da5c7ef0e08eed587687272e41bc9fe72ebd8d76b1f009_1280.jpg" alt="Professional business meeting">
-                    <div class="express-points">
-                        <div class="express-point">
-                            <i class="fas fa-check"></i>
-                            <strong>Save Time</strong> by meeting all of the pros in one session and asking personalized questions.
-                        </div>
-                        <div class="express-point">
-                            <i class="fas fa-check"></i>
-                            <strong>Feel Confident</strong> in their pricing and strategy by getting advice from industry experts who are active in the market.
-                        </div>
-                        <div class="express-point">
-                            <i class="fas fa-check"></i>
-                            <strong>Interview To Make The Right Choice.</strong> Talk to multiple experts before making a final decision to ensure they are making the right choice.
-                        </div>
-                    </div>
+                <div id="comparison-rows">
+                    <!-- JS -->
                 </div>
             </div>
             
-            <div class="cta-section">
-                <a href="#registration" class="cta-button large">Claim Your Free Spot</a>
-                <p>food & drink included</p>
-                <div class="urgency">Only 23 <span class="strikethrough">25</span> Spots Available</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="benefits">
-        <div class="container">
-            <h2>immerse yourself in This Live Event to finally feel confident selling your home.</h2>
-            <p class="benefits-intro">At this live event you can look forward to:</p>
-            
-            <div class="benefits-grid">
-                <div class="benefit">
-                    <div class="benefit-icon">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h3>Real Numbers</h3>
-                    <p>Understand exactly what your home is worth, what improvements add value, and how to price strategically.</p>
-                </div>
-                
-                <div class="benefit">
-                    <div class="benefit-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>Expert Clarity</h3>
-                    <p>Get unfiltered advice from trusted pros who aren't trying to sell you anything.</p>
-                </div>
-                
-                <div class="benefit">
-                    <div class="benefit-icon">
-                        <i class="fas fa-arrow-up"></i>
-                    </div>
-                    <h3>Confidence to Move Forward</h3>
-                    <p>Walk away with clear next steps, whether you're ready to sell now or 6 months from now.</p>
-                </div>
-                
-                <div class="benefit">
-                    <div class="benefit-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>A Curated Support Team</h3>
-                    <p>Build relationships with industry experts who can guide you when the time is right.</p>
-                </div>
-            </div>
-            
-            <div class="cta-section">
-                <a href="#registration" class="cta-button large">Claim Your Free Spot</a>
-                <p>food & drink included</p>
-                <div class="urgency">Only 23 <span class="strikethrough">25</span> Spots Available</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Speakers Section -->
-    <section class="speakers">
-        <div class="container">
-            <h2>Get A Sneak Peek Into The Event!</h2>
-            <p class="speakers-intro">
-                <strong>Meet Your Hosts & Experts —</strong> This isn't just another info session, it's your chance to connect directly with the experts who can help you sell your home the right way.
-            </p>
-            
-            <div class="speakers-grid">
-                <div class="speaker">
-                    <div class="speaker-image">
-                        <img src="https://pixabay.com/get/g3c430faff86c8a8431d7feb26602345ba094c008e589b838ae4daea4683a3862389a610b3c52142e02f79894225725168eace7b197216488b76ba3f13319bee1_1280.jpg" alt="Erica Reddy-Choquette & Sarah Meng">
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Erica Reddy-Choquette & Sarah Meng</h3>
-                        <h4>Award-Winning Toronto Realtors</h4>
-                        <p class="speaker-description">Local market experts helping sellers maximize their home's value.</p>
-                        <ul class="speaker-points">
-                            <li>Understand which Toronto neighbourhoods are hot right now—and pricing strategies that work</li>
-                            <li>Learn how to position your home to sell quickly and avoid common listing mistakes</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="speaker coming-soon">
-                    <div class="speaker-image">
-                        <div class="coming-soon-placeholder">
-                            <i class="fas fa-user"></i>
-                            <span>Speaker Announcement Coming Soon</span>
-                        </div>
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Mortgage Broker</h3>
-                        <p class="speaker-description">Coordinate your sale and next purchase like a pro, without timing headaches.</p>
-                        <ul class="speaker-points">
-                            <li>Understand bridge loans, extended closings, and how to buy before you sell.</li>
-                            <li>Learn how to avoid moving twice or ending up without a home.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="speaker coming-soon">
-                    <div class="speaker-image">
-                        <div class="coming-soon-placeholder">
-                            <i class="fas fa-user"></i>
-                            <span>Speaker Announcement Coming Soon</span>
-                        </div>
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Staging Specialist</h3>
-                        <p class="speaker-description">Revealing which $500 improvements can add $15,000+ to your sale price</p>
-                        <ul class="speaker-points">
-                            <li>Find out which improvements buyers <em>actually</em> care about — and which to skip.</li>
-                            <li>Get a checklist of fast, affordable staging wins for every room in your home.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="speaker coming-soon">
-                    <div class="speaker-image">
-                        <div class="coming-soon-placeholder">
-                            <i class="fas fa-user"></i>
-                            <span>Speaker Announcement Coming Soon</span>
-                        </div>
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Handyman</h3>
-                        <p class="speaker-description">Fix what matters, skip what doesn't, straight from a seasoned pro.</p>
-                        <ul class="speaker-points">
-                            <li>Discover which low-cost repairs make your listing shine (and which are a waste).</li>
-                            <li>Avoid red flags that scare buyers — without over-renovating.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="cta-section">
-                <a href="#registration" class="cta-button large">Claim Your Free Spot</a>
-                <p>food & drink included</p>
-                <div class="urgency">Only 23 <span class="strikethrough">25</span> Spots Available</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Event Summary Section -->
-    <section class="event-summary">
-        <div class="container">
-            <h2>Join Us <em>LIVE</em> For this Express Lane To Home Selling Live Event</h2>
-            <p>Here's everything to look forward to:</p>
-            
-            <div class="summary-card">
-                <div class="summary-image">
-                    <img src="https://pixabay.com/get/gfdb92e69e7e0926fe5dcdc4d1c53d5c618796bd60b2ade1f4f3062696f442c05349289ed19134eb7804267d7912aa2784461f409da126d48052a3f5b1f8927e9_1280.jpg" alt="Toronto skyline">
-                </div>
-                <div class="summary-details">
-                    <h3>Wednesday, July 9th, 2025 at 6:30 PM</h3>
-                    <p class="location"><strong>Location: Downtown Toronto,</strong> King & Spadina Area</p>
-                    
-                    <ul class="summary-features">
-                        <li><strong>Private access to industry experts all in one room:</strong> <em>Staging Specialist, Mortgage Specialist, Handyman, Realtors</em></li>
-                        <li><strong>Action plan to move forward</strong></li>
-                        <li><strong>Networking, snacks & beverages</strong></li>
-                        <li><strong>Zero pressure, real answers</strong></li>
-                    </ul>
-                    
-                    <div class="spots-warning">Only 23 <span class="strikethrough">25</span> Spots Available</div>
-                    <h4>Claim Your Spot Below</h4>
-                    <a href="#registration" class="cta-button">Claim Your Free Spot</a>
-                    <p class="live-note">join us live in person!</p>
-                    <div class="limited-offer">*Limited Time Offer*</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Registration Section -->
-    <section class="registration" id="registration">
-        <div class="container">
-            <h2>Secure Your Free Spot Now</h2>
-            <p class="registration-urgency">Only 23 spots remaining - Register before they're gone!</p>
-            
-            <form class="registration-form" id="registrationForm">
-                <div class="form-group">
-                    <label for="firstName">First Name *</label>
-                    <input type="text" id="firstName" name="firstName" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="lastName">Last Name *</label>
-                    <input type="text" id="lastName" name="lastName" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                
-
-                <div class="form-group checkbox-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="consent" name="consent" required>
-                        <span class="checkmark"></span>
-                        I consent to receiving communications about this event and related services.
-                    </label>
-                </div>
-                
-                <button type="submit" class="cta-button large">
-                    <i class="fas fa-lock"></i>
-                    Secure My Free Spot Now
+            <div class="text-center mt-12">
+                <button onclick="openModal()" class="btn-pulse text-xl px-10 py-4 rounded-lg">
+                    I CHOOSE THE SMART WAY <i class="fas fa-check-circle ml-2"></i>
                 </button>
-                
-                <p class="registration-note">
-                    <i class="fas fa-gift"></i>
-                    Food & drinks included • No obligation • Detailed location sent upon registration
-                </p>
-            </form>
+            </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq">
-        <div class="container">
-            <h2>Frequently asked questions.</h2>
-            <p class="faq-intro">All your questions answered so you can make the right decision before grabbing your tickets!</p>
+    <!-- SOCIAL PROOF (Speakers) - MOVED UP -->
+    <section class="py-20 px-4 bg-[#080808] border-b border-gray-900">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-4" id="speakers-title"></h2>
+            <p class="text-xl text-gray-400 mb-16 max-w-4xl mx-auto" id="speakers-subtitle"></p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="speakers-grid">
+                <!-- JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TARGET AUDIENCE (QUALIFICATION CHECKLIST) -->
+    <section class="py-24 px-4 bg-[#050505] border-t border-gray-900" id="target-audience-section">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="bg-gray-800 text-gray-300 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-gray-700">Qualification Check</span>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mt-6 mb-4" id="target-audience-title"></h2>
+            </div>
             
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What is the format of the event?</h3>
-                        <i class="fas fa-chevron-down"></i>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="titan-stack-card p-8 rounded-2xl shadow-2xl">
+                    <ul class="space-y-4 titan-check-list" id="target-audience-list">
+                        <!-- JS -->
+                    </ul>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-2xl font-heading font-bold text-white mb-4">Does This Sound Like You?</h3>
+                    <p class="text-gray-400 mb-8 leading-relaxed">If you checked even one of these boxes, this workshop was built specifically for your situation. We cut through the noise and give you the exact blueprint you need.</p>
+                    <p class="text-green-500 font-bold italic" id="target-audience-note"></p>
+                    <button onclick="openModal()" class="btn-pulse mt-8 px-8 py-4 text-xl rounded w-full md:w-auto">
+                        YES, THIS IS FOR ME
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION (VALUE PILLARS) -->
+    <section class="py-24 px-4 bg-black border-t border-gray-900" id="benefits-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-6" id="benefits-title"></h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto" id="benefits-subtitle"></p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8" id="benefits-grid">
+                <!-- JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENT SUMMARY (OFFER STACK) -->
+    <section class="py-24 px-4 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-fixed bg-[#080808] border-t border-gray-900" id="event-summary-section">
+        <div class="max-w-4xl mx-auto">
+            <div class="titan-stack-card p-8 md:p-12 rounded-3xl border-2 border-gray-800 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-4" id="event-summary-title"></h2>
+                    <p class="text-xl text-gray-400" id="event-summary-subtitle"></p>
+                </div>
+
+                <!-- Stack Items -->
+                <div class="bg-[#111] rounded-xl p-8 mb-10 border border-gray-800">
+                    <ul class="space-y-6" id="event-summary-features">
+                        <!-- JS -->
+                    </ul>
+                </div>
+
+                <!-- Logistics Row -->
+                <div class="grid grid-cols-2 gap-4 mb-10 text-center">
+                    <div class="bg-gray-900/50 p-4 rounded border border-gray-800">
+                        <div class="text-green-500 text-sm font-bold uppercase mb-1">Date</div>
+                        <div class="text-white font-bold" id="event-summary-date"></div>
                     </div>
-                    <div class="faq-answer">
-                        <p>You'll rotate through 5 stations (like speed dating), each with a different expert. There will be time before and after to mingle.</p>
+                    <div class="bg-gray-900/50 p-4 rounded border border-gray-800">
+                        <div class="text-green-500 text-sm font-bold uppercase mb-1">Location</div>
+                        <div class="text-white font-bold" id="event-summary-location"></div>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Where is it?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Downtown Toronto. Address sent upon registration.</p>
-                    </div>
+
+                <!-- Price Anchor -->
+                <div class="text-center border-t border-dashed border-gray-700 pt-8 mb-8">
+                    <p class="text-gray-500 text-lg mb-2">Total Value: <span class="line-through text-red-500">$997</span></p>
+                    <p class="text-4xl md:text-6xl font-heading font-bold text-white">YOUR PRICE: <span class="text-green-500">FREE</span></p>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How long is it?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Roughly 90 minutes, starting at 6:30 PM.</p>
-                    </div>
+
+                <!-- Note & CTA -->
+                <div class="text-center">
+                    <p class="text-gray-400 mb-6 italic" id="event-summary-note"></p>
+                    <p class="text-yellow-400 font-bold text-sm mb-8 animate-pulse" id="event-summary-limited-offer"></p>
+                    <button onclick="openModal()" class="btn-pulse text-2xl md:text-4xl px-12 py-6 w-full rounded-xl shadow-2xl hover:scale-105 transition-transform" id="event-summary-cta">
+                        CLAIM YOUR FREE SPOT NOW
+                    </button>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Is it really free?</h3>
-                        <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE DETAILS (Triptych) -->
+    <section class="py-16 px-4 bg-white text-black">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-center text-4xl font-heading font-bold mb-12 text-black">EVENT DETAILS</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center" id="details-grid">
+                <div class="p-6 border-2 border-gray-100 rounded-xl shadow-sm">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl text-blue-600">
+                        <i class="fas fa-calendar-day"></i>
                     </div>
-                    <div class="faq-answer">
-                        <p>Yes! Just bring your questions and curiosity. Drinks, snacks, and goodies are on us.</p>
-                    </div>
+                    <h3 class="font-bold text-xl mb-2 uppercase">When</h3>
+                    <p class="text-gray-600 font-medium" id="detail-when"></p>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Do I need to bring anything?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="p-6 border-2 border-gray-100 rounded-xl shadow-sm">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl text-red-600">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <div class="faq-answer">
-                        <p>Just your phone and maybe a notepad. We'll handle the rest.</p>
-                    </div>
+                    <h3 class="font-bold text-xl mb-2 uppercase">Where</h3>
+                    <p class="text-gray-600 font-medium" id="detail-where"></p>
+                    <p class="text-gray-500 text-sm mt-2" id="detail-where-note"></p>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Can I bring a friend or partner?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="p-6 border-2 border-gray-100 rounded-xl shadow-sm">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl text-green-600">
+                        <i class="fas fa-dollar-sign"></i>
                     </div>
-                    <div class="faq-answer">
-                        <p>Absolutely—just make sure they register separately as we only have room for 25 people.</p>
-                    </div>
+                    <h3 class="font-bold text-xl mb-2 uppercase">Cost</h3>
+                    <p class="text-gray-600 font-medium" id="detail-cost">100% FREE (For Now)</p>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What if I'm not ready to sell yet?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="p-6 border-2 border-gray-100 rounded-xl shadow-sm md:col-span-3">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl text-blue-600">
+                        <i class="fas fa-clock"></i>
                     </div>
-                    <div class="faq-answer">
-                        <p>That's okay! This is about getting prepared, not pressuring you to sell.</p>
-                    </div>
+                    <h3 class="font-bold text-xl mb-2 uppercase">Duration</h3>
+                    <p class="text-gray-600 font-medium" id="detail-duration"></p>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How many spots are available?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We're capping it at 25 people to keep it personal. Register early—spots will go fast.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION (CONCIERGE SUPPORT) -->
+    <section class="py-16 px-4 bg-[#080808] border-t border-gray-900" id="contact-section">
+        <div class="max-w-3xl mx-auto">
+            <div class="titan-stack-card p-8 rounded-xl flex flex-col md:flex-row items-center gap-8">
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-green-500 flex-shrink-0 shadow-[0_0_20px_rgba(38,255,121,0.3)]">
+                     <!-- Agent Image will be injected via JS or fallback -->
+                     <img id="contact-agent-img" src="https://via.placeholder.com/150" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center md:text-left flex-grow">
+                    <h3 class="text-2xl font-heading font-bold text-white mb-2">Have Questions Before Joining?</h3>
+                    <p class="text-gray-400 mb-6">Text or email our team directly. We're real people here to help you make the right choice.</p>
+                    <div id="contact-info" class="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+                        <!-- JS -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact">
-        <div class="container">
-            <div class="contact-info">
-                <div class="contact-person">
-                    <div class="contact-image">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Erica Reddy-Choquette, Broker</h3>
-                        <p><i class="fas fa-phone"></i> 416.587.2782</p>
-                        <p><i class="fas fa-envelope"></i> Erica@EricaReddy.com</p>
-                    </div>
-                </div>
-                
-                <div class="contact-person">
-                    <div class="contact-image">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Sarah Meng, Realtor</h3>
-                        <p><i class="fas fa-phone"></i> 416-989-2879</p>
-                        <p><i class="fas fa-envelope"></i> sarahmeng@royallepage.ca</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="company-info">
-                    <h4>Royal LePage Signature Realty, Brokerage*</h4>
-                    <p>201-8 Sampson Mews, Toronto, ON, M3C 0H5</p>
-                </div>
-                <div class="footer-links">
-                    <p>&copy; Copyright 2025. All rights reserved.</p>
-                    <a href="#privacy">Privacy Policy</a>
-                </div>
+    <!-- LEGAL FOOTER -->
+    <footer class="bg-black py-8 text-center text-gray-600 text-xs border-t border-gray-900">
+        <div class="container mx-auto px-4">
+            <p id="footer-copy"></p>
+            <p id="footer-brokerage" class="mt-1 font-bold text-gray-500"></p>
+            <p id="footer-address" class="mt-2 text-gray-500"></p>
+            <div class="mt-4 space-x-4">
+                <a href="#" id="footer-privacy-link" class="hover:text-white">Privacy Policy</a>
+                <span>|</span>
+                <a href="#" class="hover:text-white">Terms of Service</a>
             </div>
         </div>
     </footer>
 
-    <!-- Success Modal -->
-    <div class="modal" id="successModal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-body">
-                <i class="fas fa-check-circle success-icon"></i>
-                <h3>Registration Successful!</h3>
-                <p>Thank you for registering! We'll send you the exact location details and event reminders via email.</p>
-                <p><strong>See you on Wednesday, July 9th at 6:30 PM!</strong></p>
+    <!-- MODAL (The Squeeze) -->
+    <div class="modal-overlay" id="modal">
+        <div class="bg-white text-black rounded-lg w-full max-w-md mx-4 relative overflow-hidden shadow-2xl animate-fade-in-up">
+            <!-- Header -->
+            <div class="bg-gray-100 p-4 border-b border-gray-200 flex justify-between items-center">
+                <span class="font-bold text-sm uppercase tracking-wide text-gray-500">Step 1 of 2</span>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-red-500 text-2xl font-bold">&times;</button>
+            </div>
+            <div class="h-2 bg-gray-200 w-full">
+                <div class="h-full bg-green-500 w-1/2 transition-all duration-500" id="modal-progress"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-8" id="modal-content">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-heading font-bold mb-2">Almost There!</h3>
+                    <p class="text-gray-600 text-sm">Enter your details below to secure your spot.</p>
+                </div>
+
+                <form id="regForm" class="space-y-4">
+                    <div>
+                        <input type="text" name="firstName" class="w-full bg-gray-50 border border-gray-300 p-4 rounded font-bold focus:ring-2 focus:ring-green-500 outline-none" placeholder="First Name" required>
+                    </div>
+                    <div>
+                        <input type="text" name="lastName" class="w-full bg-gray-50 border border-gray-300 p-4 rounded font-bold focus:ring-2 focus:ring-green-500 outline-none" placeholder="Last Name" required>
+                    </div>
+                    <div>
+                        <input type="email" name="email" class="w-full bg-gray-50 border border-gray-300 p-4 rounded font-bold focus:ring-2 focus:ring-green-500 outline-none" placeholder="Best Email Address" required>
+                    </div>
+                    <div>
+                        <input type="tel" name="phone" class="w-full bg-gray-50 border border-gray-300 p-4 rounded font-bold focus:ring-2 focus:ring-green-500 outline-none" placeholder="Mobile Number" required>
+                    </div>
+                    <button type="submit" id="modalBtn" class="btn-pulse w-full py-4 text-xl rounded">
+                        Next Step <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </form>
+                <p class="text-center text-[10px] text-gray-400 mt-4"><i class="fas fa-lock"></i> Information is secure.</p>
             </div>
         </div>
     </div>
 
-    <!-- Question Modal -->
-    <div class="modal-overlay" id="questionModalOverlay">
-        <div class="modal-content" id="questionModalContent" role="dialog" aria-modal="true" aria-labelledby="questionModalTitle">
-            <button class="modal-close-btn" id="questionModalCloseBtn" aria-label="Close">
-                <i class="fas fa-times" aria-hidden="true"></i>
-            </button>
-            <div id="question-modal-steps-container">
-                <!-- Dynamic Question Step Content Goes Here -->
-            </div>
-        </div>
-    </div>
+    <!-- MAIN LOGIC -->
+    <script>
+        // --- HELPER FUNCTIONS ---
+        function inject(id, content, isHtml = false) {
+            const el = document.getElementById(id);
+            if(el) {
+                if(isHtml) el.innerHTML = content;
+                else el.textContent = content;
+            }
+        }
 
-    <script src="script.js"></script>
+        function hideEmptySections() {
+            const sections = [
+                { id: 'roadmap-grid', check: () => !config.solutions?.items || config.solutions.items.length === 0 },
+                { id: 'comparison-rows', check: () => !config.comparison?.painfulWay?.points || !config.comparison?.expressWay?.points },
+                { id: 'speakers-grid', check: () => !config.speakers?.experts || config.speakers.experts.length === 0 },
+                { id: 'faq-list', check: () => !config.faq?.questions || config.faq.questions.length === 0 },
+                { id: 'benefits-grid', check: () => !config.benefits?.items || config.benefits.items.length === 0 },
+                { id: 'target-audience-list', check: () => !config.targetAudience?.items || config.targetAudience.items.length === 0 },
+                { id: 'event-summary-features', check: () => !config.eventSummary?.features || config.eventSummary.features.length === 0 }
+            ];
+            sections.forEach(section => {
+                const el = document.getElementById(section.id);
+                if(el && section.check()) {
+                    el.closest('section')?.style.setProperty('display', 'none');
+                }
+            });
+        }
+
+        function waitForConfig(callback) {
+            if(typeof config !== 'undefined' && config.meta) {
+                callback();
+            } else {
+                let attempts = 0;
+                const checkConfig = setInterval(() => {
+                    attempts++;
+                    if(typeof config !== 'undefined' && config.meta) {
+                        clearInterval(checkConfig);
+                        callback();
+                    } else if(attempts > 50) {
+                        clearInterval(checkConfig);
+                        console.error('Config failed to load after 5 seconds');
+                    }
+                }, 100);
+            }
+        }
+
+        // --- INITIALIZATION ---
+        waitForConfig(() => {
+            document.title = config.meta.pageTitle;
+            
+            // META TAGS
+            const metaDesc = document.getElementById('meta-description');
+            const metaKeywords = document.getElementById('meta-keywords');
+            if(metaDesc && config.meta?.description) metaDesc.setAttribute('content', config.meta.description);
+            if(metaKeywords && config.meta?.keywords) metaKeywords.setAttribute('content', config.meta.keywords);
+
+            // TOP BAR
+            inject('top-bar-text', config.header.eventDate);
+            inject('top-bar-spots', config.header.spotsAvailable, true);
+
+            // HERO
+            inject('hero-badge', config.hero.badge);
+            inject('hero-headline', config.hero.headline.replace(/class='highlight'/g, "class='text-green-400 font-bold'"), true);
+            inject('hero-subtitle', config.hero.subtitle, true);
+            inject('hero-cta', config.hero.ctaText);
+            if(config.hero?.urgencyText) {
+                inject('hero-urgency-text', `<i class="fas fa-exclamation-circle text-yellow-400"></i> ${config.hero.urgencyText}`, true);
+            }
+
+            // PROBLEMS
+            inject('problems-title', config.problems.title);
+            if(config.problems.items) {
+                inject('problems-list', config.problems.items.map(item => `
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-times-circle text-red-500 mt-1 text-xl"></i>
+                        <span>${item}</span>
+                    </li>
+                `).join(''), true);
+            }
+
+            // SUCCESS STATEMENT
+            if(config.successStatement) {
+                inject('success-statement-text', config.successStatement);
+            } else {
+                const successSection = document.getElementById('success-statement-section');
+                if(successSection) successSection.style.display = 'none';
+            }
+
+            // SOLUTIONS TITLE
+            if(config.solutions?.title) {
+                inject('solutions-title', config.solutions.title, true);
+            }
+
+            // ROADMAP
+            if(config.solutions?.items && config.solutions.items.length > 0) {
+                const items = config.solutions.items;
+                const days = [items.slice(0,2), items.slice(2,4), items.slice(4,6)];
+                const dayTitles = ["Frame The Strategy", "Build The Plan", "Launch Your Journey"];
+
+                const roadHtml = days.map((dayItems, i) => `
+                    <div class="funnel-card p-6 relative">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-600 text-black font-black px-4 py-1 rounded text-sm uppercase tracking-wide border-2 border-white">
+                            STEP ${i+1}
+                        </div>
+                        <h3 class="text-center text-4xl font-heading font-bold text-green-500 mt-4 mb-2">PHASE ${i+1}</h3>
+                        <div class="text-center text-xs text-gray-400 font-bold uppercase mb-4 border-b border-gray-800 pb-4">
+                            <i class="far fa-calendar-alt"></i> <span>DATE TBA</span>
+                        </div>
+                        <h4 class="text-center text-lg font-bold text-white mb-6">${dayTitles[i]}</h4>
+                        <div class="space-y-3">
+                            ${dayItems.map(item => `
+                                <div class="bg-white text-black rounded p-3 text-sm font-bold flex gap-3 items-start">
+                                    <i class="fas fa-check-circle text-green-600 mt-1"></i>
+                                    <span>${item.replace(/<[^>]*>/g, '')}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+                inject('roadmap-grid', roadHtml, true);
+            }
+
+            // TARGET AUDIENCE
+            if(config.targetAudience?.title) {
+                inject('target-audience-title', config.targetAudience.title);
+                if(config.targetAudience.items && config.targetAudience.items.length > 0) {
+                    inject('target-audience-list', config.targetAudience.items.map(item => `
+                        <li class="text-gray-300 font-medium text-lg">
+                            <i class="fas fa-check-circle text-green-500 mt-1 text-xl"></i>
+                            <span>${item}</span>
+                        </li>
+                    `).join(''), true);
+                }
+                if(config.targetAudience.note) {
+                    inject('target-audience-note', config.targetAudience.note);
+                }
+            } else {
+                const targetSection = document.getElementById('target-audience-section');
+                if(targetSection) targetSection.style.display = 'none';
+            }
+
+            // DETAILS
+            inject('detail-when', (config.event?.date || '') + (config.event?.time ? "<br>" + config.event.time : ''), true);
+            inject('detail-where', config.event?.location || '');
+            if(config.event?.locationNote) {
+                inject('detail-where-note', config.event.locationNote);
+            }
+            if(config.event?.cost) {
+                inject('detail-cost', config.event.cost);
+            }
+            const durationCard = document.querySelector('#detail-duration')?.closest('div');
+            if(config.event?.duration) {
+                inject('detail-duration', config.event.duration);
+                if(durationCard) durationCard.style.display = 'block';
+            } else if(durationCard) {
+                durationCard.style.display = 'none';
+            }
+
+            // COMPARISON - Titles and Subtitles
+            if(config.comparison?.painfulWay?.title) {
+                inject('comparison-painful-title', config.comparison.painfulWay.title);
+            }
+            if(config.comparison?.painfulWay?.subtitle) {
+                inject('comparison-painful-subtitle', config.comparison.painfulWay.subtitle);
+            }
+            if(config.comparison?.expressWay?.title) {
+                inject('comparison-express-title', config.comparison.expressWay.title);
+            }
+            if(config.comparison?.expressWay?.subtitle) {
+                inject('comparison-express-subtitle', config.comparison.expressWay.subtitle);
+            }
+
+            // COMPARISON - Build proper table rows
+            if(config.comparison?.painfulWay?.points && config.comparison?.expressWay?.points) {
+                const maxPoints = Math.max(config.comparison.painfulWay.points.length, config.comparison.expressWay.points.length);
+                const comparisonRows = [];
+                for(let i = 0; i < maxPoints; i++) {
+                    const painfulPoint = config.comparison.painfulWay.points[i] || '';
+                    const expressPoint = config.comparison.expressWay.points[i] || '';
+                    comparisonRows.push(`
+                        <div class="grid grid-cols-2 border-b border-gray-800">
+                            <div class="p-4 border-r border-gray-800">
+                                <div class="flex items-start gap-3 text-sm md:text-base text-gray-400">
+                                    <i class="fas fa-times text-red-500 mt-1"></i>
+                                    <span>${painfulPoint}</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex items-start gap-3 text-sm md:text-base font-medium text-white">
+                                    <i class="fas fa-check text-green-500 mt-1"></i>
+                                    <span>${expressPoint}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                }
+                inject('comparison-rows', comparisonRows.join(''), true);
+            }
+
+            // BENEFITS
+            if(config.benefits?.title) {
+                inject('benefits-title', config.benefits.title);
+                if(config.benefits.subtitle) {
+                    inject('benefits-subtitle', config.benefits.subtitle);
+                }
+                if(config.benefits.items && config.benefits.items.length > 0) {
+                    inject('benefits-grid', config.benefits.items.map((benefit, idx) => `
+                        <div class="titan-neon-border bg-[#111] p-8 rounded-xl relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 bg-gray-800 text-gray-500 text-xs font-bold px-3 py-1 rounded-bl-lg">0${idx + 1}</div>
+                            <div class="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-900/20 transition-colors">
+                                <i class="fas fa-star text-green-500 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-white mb-3 group-hover:text-green-400 transition-colors">${benefit.title}</h3>
+                            <p class="text-gray-400 leading-relaxed">${benefit.description}</p>
+                        </div>
+                    `).join(''), true);
+                }
+            } else {
+                const benefitsSection = document.getElementById('benefits-section');
+                if(benefitsSection) benefitsSection.style.display = 'none';
+            }
+
+            // SPEAKERS (Headshots)
+            inject('speakers-title', config.speakers?.title || '');
+            if(config.speakers?.subtitle) {
+                inject('speakers-subtitle', config.speakers.subtitle, true);
+            }
+            if(config.speakers?.experts && config.speakers.experts.length > 0) {
+                inject('speakers-grid', config.speakers.experts.map(exp => `
+                    <div class="funnel-card p-6 text-center group">
+                        <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-green-500 shadow-xl mb-4 grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <img src="${exp.headshotUrl}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150'">
+                        </div>
+                        <h3 class="font-bold text-xl text-white uppercase mb-2">${exp.name}</h3>
+                        <p class="text-xs text-green-500 font-bold uppercase tracking-wide mb-3">${exp.title}</p>
+                        ${exp.description ? `<p class="text-sm text-gray-400 mb-3">${exp.description}</p>` : ''}
+                        ${exp.points && exp.points.length > 0 ? `
+                            <ul class="text-left text-xs text-gray-500 space-y-2 mt-4">
+                                ${exp.points.map(point => `<li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i><span>${point}</span></li>`).join('')}
+                            </ul>
+                        ` : ''}
+                    </div>
+                `).join(''), true);
+            }
+
+            // EVENT SUMMARY
+            if(config.eventSummary?.title) {
+                inject('event-summary-title', config.eventSummary.title);
+                if(config.eventSummary.subtitle) {
+                    inject('event-summary-subtitle', config.eventSummary.subtitle);
+                }
+                if(config.eventSummary.date) {
+                    inject('event-summary-date', config.eventSummary.date);
+                }
+                if(config.eventSummary.location) {
+                    inject('event-summary-location', config.eventSummary.location);
+                }
+                if(config.eventSummary.features && config.eventSummary.features.length > 0) {
+                    inject('event-summary-features', config.eventSummary.features.map(feature => `
+                        <li class="flex items-center justify-between border-b border-gray-800 pb-4 last:border-0 last:pb-0">
+                            <div class="flex items-center gap-4">
+                                <i class="fas fa-check-square text-green-500 text-xl"></i>
+                                <span class="text-gray-300 font-medium text-lg">${feature}</span>
+                            </div>
+                            <span class="text-gray-500 font-bold text-sm hidden md:block">PRICELESS</span>
+                        </li>
+                    `).join(''), true);
+                }
+                if(config.eventSummary.note) {
+                    inject('event-summary-note', config.eventSummary.note);
+                }
+                if(config.eventSummary.limitedOffer) {
+                    inject('event-summary-limited-offer', config.eventSummary.limitedOffer);
+                }
+                if(config.eventSummary.ctaText) {
+                    inject('event-summary-cta', config.eventSummary.ctaText);
+                }
+            } else {
+                const eventSummarySection = document.getElementById('event-summary-section');
+                if(eventSummarySection) eventSummarySection.style.display = 'none';
+            }
+
+            // FAQ
+            inject('faq-title', config.faq?.title || '');
+            if(config.faq?.subtitle) {
+                inject('faq-subtitle', config.faq.subtitle);
+            }
+            if(config.faq?.questions && config.faq.questions.length > 0) {
+                inject('faq-list', config.faq.questions.map(q => `
+                    <div class="border border-gray-800 rounded bg-[#111] overflow-hidden">
+                        <button class="w-full text-left p-4 font-bold text-white flex justify-between items-center focus:outline-none hover:bg-gray-900 transition-colors" onclick="toggleFaq(this)">
+                            <span>${q.question}</span>
+                            <i class="fas fa-plus text-green-500"></i>
+                        </button>
+                        <div class="hidden p-4 text-gray-400 text-sm border-t border-gray-800 bg-black">
+                            ${q.answer}
+                        </div>
+                    </div>
+                `).join(''), true);
+            }
+
+            // CONTACT
+            if(config.contact?.agents && config.contact.agents.length > 0) {
+                const agent = config.contact.agents[0];
+                // Inject Image if available
+                const imgEl = document.getElementById('contact-agent-img');
+                if(imgEl) {
+                    // Find matching expert for image
+                    const expert = config.speakers?.experts?.find(e => e.name === agent.name);
+                    if(expert && expert.headshotUrl) {
+                        imgEl.src = expert.headshotUrl;
+                    }
+                }
+
+                inject('contact-info', `
+                    <div class="flex flex-col gap-2">
+                        <p class="text-white font-bold text-xl">${agent.name || 'Support Team'}</p>
+                        <p class="text-green-500 text-sm font-bold uppercase tracking-wide mb-2">${agent.title || 'Event Coordinator'}</p>
+                    </div>
+                    <div class="flex gap-4 mt-4 md:mt-0">
+                        ${agent.phone ? `<a href="tel:${agent.phone}" class="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-bold transition-colors flex items-center gap-2"><i class="fas fa-phone"></i> <span>Call/Text</span></a>` : ''}
+                        ${agent.email ? `<a href="mailto:${agent.email}" class="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-bold transition-colors flex items-center gap-2"><i class="fas fa-envelope"></i> <span>Email Us</span></a>` : ''}
+                    </div>
+                `, true);
+            } else {
+                const contactSection = document.getElementById('contact-section');
+                if(contactSection) contactSection.style.display = 'none';
+            }
+
+            // FOOTER CTA
+            const footerTitle = config.eventDetails?.sectionTitle || config.registration?.title || '';
+            const footerNote = config.registration?.note || '';
+            const footerCtaText = config.eventDetails?.ctaText || config.registration?.ctaText || 'SECURE MY FREE TICKET NOW';
+            inject('footer-title', footerTitle);
+            inject('footer-note', footerNote);
+            const footerCtaBtn = document.getElementById('footer-cta-button');
+            if(footerCtaBtn) {
+                footerCtaBtn.innerHTML = footerCtaText + ' <i class="fas fa-angle-double-right ml-3"></i>';
+            }
+            inject('footer-urgency', config.registration?.urgency || '', true);
+
+            // FOOTER
+            inject('footer-copy', config.footer?.copyright || '');
+            inject('footer-brokerage', config.footer?.brokerage || '');
+            if(config.footer?.address) {
+                inject('footer-address', config.footer.address);
+            }
+            if(config.footer?.privacyPolicy) {
+                const privacyLink = document.getElementById('footer-privacy-link');
+                if(privacyLink) privacyLink.setAttribute('href', config.footer.privacyPolicy);
+            }
+
+            // Hide empty sections
+            hideEmptySections();
+
+            // MODAL LOGIC
+            initModal();
+        });
+
+        // --- INTERACTION ---
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            if(content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        }
+
+        function openModal() {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        function initModal() {
+            const form = document.getElementById('regForm');
+            const modalContent = document.getElementById('modal-content');
+            let userData = {};
+
+            // Step 1: Form Submit
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                userData = Object.fromEntries(formData);
+                
+                // Show Loading
+                document.getElementById('modalBtn').innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> PROCESSING...';
+                
+                // Go to Questions
+                setTimeout(() => startQuestions(), 800);
+            });
+
+            // Step 2: Questions
+            function startQuestions() {
+                let currentQ = 0;
+                let answers = [];
+                const questions = config.modalQuestions;
+
+                function renderQ() {
+                    if(currentQ >= questions.length) {
+                        finish();
+                        return;
+                    }
+                    const q = questions[currentQ];
+                    
+                    // Update Progress Bar
+                    const progress = ((currentQ + 1) / (questions.length + 1)) * 100;
+                    document.getElementById('modal-progress').style.width = progress + '%';
+
+                    let optionsHtml = q.options.map(opt => `
+                        <button class="w-full text-left p-4 mb-2 border border-gray-200 rounded hover:bg-green-50 hover:border-green-500 transition-all font-bold text-gray-700 group flex items-center gap-3" onclick="handleAnswer('${q.id}', '${q.questionText}', '${opt.value}', '${opt.text.replace(/'/g, "\\'")}')">
+                            <div class="w-5 h-5 rounded-full border-2 border-gray-300 group-hover:border-green-500 flex items-center justify-center">
+                                <div class="w-3 h-3 rounded-full bg-green-500 opacity-0 group-hover:opacity-100"></div>
+                            </div>
+                            ${opt.text}
+                        </button>
+                    `).join('');
+
+                    modalContent.innerHTML = `
+                        <div class="text-center mb-6 animate-fade-in">
+                            <h3 class="text-xl font-bold mb-4">${q.questionText}</h3>
+                            <div>${optionsHtml}</div>
+                        </div>
+                    `;
+                }
+
+                window.handleAnswer = (questionId, qText, val, answerText) => {
+                    answers.push({ 
+                        questionId: questionId,
+                        question: qText, 
+                        answer: answerText || val
+                    });
+                    currentQ++;
+                    renderQ();
+                };
+
+                renderQ();
+
+                function finish() {
+                    document.getElementById('modal-progress').style.width = '100%';
+                    modalContent.innerHTML = `
+                        <div class="text-center py-10">
+                            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600 text-4xl">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h2 class="text-3xl font-heading font-bold mb-2">YOU'RE IN!</h2>
+                            <p class="text-gray-600 mb-4">Ticket sent to <strong>${userData.email}</strong></p>
+                            <p class="text-xs text-gray-400">Check your spam folder if missing.</p>
+                        </div>
+                    `;
+                    
+                    // Update spots counter locally
+                    if(config.event?.spotsLeft !== undefined) {
+                        config.event.spotsLeft = Math.max(0, config.event.spotsLeft - 1);
+                        const spotsText = config.header?.spotsAvailable || `Only ${config.event.spotsLeft} Spots Available`;
+                        inject('top-bar-spots', spotsText.replace(/\d+/, config.event.spotsLeft), true);
+                        inject('footer-urgency', config.registration?.urgency?.replace(/\d+/, config.event.spotsLeft) || '', true);
+                    }
+                    
+                    // Send Data
+                    const webhookUrl = (config.webhook?.enabled && config.webhook?.url) 
+                        ? config.webhook.url 
+                        : (config.deploymentInfo?.webhookUrl || '');
+                    
+                    if(webhookUrl) {
+                        const timestamp = new Date().toISOString();
+                        const payload = {
+                            source: 'v11.html',
+                            timestamp: timestamp,
+                            submittedAt: timestamp,
+                            firstName: userData.firstName || '',
+                            lastName: userData.lastName || '',
+                            email: userData.email || '',
+                            phone: userData.phone || '',
+                            agentEmail: config.contact?.agents?.[0]?.email || '',
+                            questions: answers.map(a => ({
+                                questionId: a.questionId,
+                                question: a.question,
+                                answer: a.answer
+                            })),
+                            campaign: config.event?.title || '',
+                            deploymentInfo: config.deploymentInfo || {}
+                        };
+                        
+                        fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify(payload)
+                        }).catch(err => console.error('Webhook error:', err));
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+    </style>
 </body>
 </html>
