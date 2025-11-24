@@ -238,11 +238,11 @@
         </div>
     </header>
 
-    <!-- 3-DAY BREAKDOWN (Green Border Cards) -->
+    <!-- 3-PHASE BLUEPRINT (Green Border Cards) -->
     <section class="py-16 px-4 bg-black">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-12">
-                <p class="text-green-500 font-bold tracking-widest text-sm uppercase mb-2">Three Days. One Product. Clear Steps.</p>
+                <p class="text-green-500 font-bold tracking-widest text-sm uppercase mb-2">The Workshop Roadmap</p>
                 <h2 class="text-3xl md:text-5xl font-heading font-bold uppercase text-white">Here's What We'll Do Together</h2>
             </div>
 
@@ -269,9 +269,9 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 text-black">
-                <!-- What -->
+                <!-- The Event -->
                 <div class="bg-white rounded-3xl p-8 shadow-lg border-4 border-transparent hover:border-green-500 transition-colors">
-                    <h3 class="text-4xl font-heading font-bold mb-4">WHAT</h3>
+                    <h3 class="text-4xl font-heading font-bold mb-4">THE EVENT</h3>
                     <p class="font-semibold text-gray-800 leading-relaxed" id="details-what"></p>
                 </div>
                 <!-- When -->
@@ -463,27 +463,26 @@
                 inject('hero-cta', config.hero?.ctaText || 'GET MY FREE TICKET');
                 inject('hero-spots', `Only ${config.event?.spotsLeft || 0} <span class='strikethrough'>${config.event?.totalSpots || 0}</span> Spots Available`, true);
 
-                // 3-DAY ROADMAP (Splitting Solutions List into 3 Cards)
+                // 3-PHASE BLUEPRINT (Splitting Solutions List into 3 Cards)
                 if(config.solutions?.items && config.solutions.items.length > 0) {
                     const items = config.solutions.items;
-                    const days = [ 
+                    const phases = [ 
                         items.slice(0, Math.ceil(items.length / 3)), 
                         items.slice(Math.ceil(items.length / 3), Math.ceil(items.length * 2 / 3)), 
                         items.slice(Math.ceil(items.length * 2 / 3)) 
-                    ].filter(day => day.length > 0);
+                    ].filter(phase => phase.length > 0);
                     
-                    const roadmapHtml = days.map((dayItems, i) => `
+                    const roadmapHtml = phases.map((phaseItems, i) => `
                         <div class="day-card p-6">
                             <div class="day-header">
-                                <h3 class="text-4xl font-black text-[#39FF14] mb-2">DAY ${i+1}</h3>
+                                <h3 class="text-4xl font-black text-[#39FF14] mb-2">PHASE ${i+1}</h3>
                                 <div class="flex justify-center items-center gap-2 text-white text-sm font-bold">
-                                    <i class="far fa-calendar-alt"></i> <span>${config.event?.date || 'DATE TBA'}</span>
-                                    <i class="far fa-clock ml-1"></i> <span>${config.event?.time || 'TIME TBA'}</span>
+                                    <i class="fas fa-list-check"></i> <span>${config.event?.date || 'Workshop'}</span>
                                 </div>
                             </div>
                             <div class="border-t border-gray-800 my-4"></div>
                             <div class="space-y-3">
-                                ${dayItems.map(item => `
+                                ${phaseItems.map(item => `
                                     <div class="white-bubble">
                                         <i class="fas fa-angle-double-right text-green-600 mt-1"></i>
                                         <span>${item.replace(/<[^>]*>/g, '')}</span>
@@ -496,7 +495,10 @@
                 }
 
                 // DETAILS (White Cards)
-                inject('details-what', config.hero?.subtitle || config.eventDetails?.sectionTitle || '', true);
+                const eventTitle = config.event?.title || '';
+                const eventBadge = config.hero?.badge || '';
+                const eventDescription = eventTitle && eventBadge ? `${eventTitle}: ${eventBadge}` : (eventTitle || eventBadge || '');
+                inject('details-what', eventDescription, true);
                 inject('details-when', (config.event?.date || '') + (config.event?.time ? "<br>" + config.event.time : ''));
                 inject('details-where', config.event?.location || '');
 
