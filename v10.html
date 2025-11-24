@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Inter & Oswald -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- External Config -->
+    <script src="config.js"></script>
+
+    <style>
+        :root {
+            --neon-green: #00D936; /* High-vis green from screenshot */
+            --dark-green: #003300;
+            --bg-black: #000000;
+            --bg-card: #0a0a0a;
+            --red-alert: #FF3B30;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* --- SHINY GOLD BUTTON --- */
+        .btn-gold {
+            background: linear-gradient(to bottom, #FFEB3B 0%, #FBC02D 100%);
+            border-bottom: 4px solid #F57F17;
+            color: #000;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.05em;
+            border-radius: 50px; /* Pill shape from screenshot */
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s;
+            box-shadow: 0 10px 20px rgba(251, 192, 45, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Shine Effect */
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 15px 30px rgba(251, 192, 45, 0.4);
+        }
+
+        .btn-gold:active {
+            transform: translateY(2px);
+            border-bottom-width: 0px;
+            box-shadow: none;
+        }
+
+        /* --- TICKET ICON STYLE --- */
+        .ticket-icon {
+            color: #000;
+            font-size: 1.2em;
+        }
+
+        /* --- CARD STYLES (Exact Replica) --- */
+        .day-card {
+            background-color: #000;
+            border: 2px solid var(--neon-green);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* The "Day X" Header inside card */
+        .day-header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        /* White bubbles inside dark cards */
+        .white-bubble {
+            background: white;
+            color: black;
+            border-radius: 10px; /* Rounded corners from screenshot */
+            padding: 15px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* --- HIGHLIGHTS --- */
+        .text-green { color: var(--neon-green); }
+        .bg-green-gradient {
+            background: linear-gradient(to bottom, #003300 0%, #000000 100%);
+        }
+
+        /* --- COMPARISON BOXES --- */
+        .comp-box-green {
+            background: #051a05; /* Very dark green bg */
+            border: 2px solid var(--neon-green);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .comp-header-green {
+            background: var(--dark-green);
+            color: var(--neon-green);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .comp-box-red {
+            background: #1a0505; /* Very dark red bg */
+            border: 2px solid var(--red-alert);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .comp-header-red {
+            background: #330000;
+            color: var(--red-alert);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        /* --- PROOF / SPEAKERS --- */
+        .proof-card {
+            background: white;
+            color: black;
+            border-radius: 20px;
+            padding: 20px;
+            border: 4px solid var(--neon-green); /* Green border from screenshot */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .proof-name-badge {
+            background: black;
+            color: var(--neon-green);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-style: italic;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.9);
+            z-index: 10000; display: none; align-items: center; justify-content: center;
+        }
+        .modal-overlay.active { display: flex; }
+
+        /* UTILS */
+        .highlight { color: var(--neon-green); font-weight: 700; }
+        .check-icon { color: var(--neon-green); font-size: 1.2rem; margin-top: 2px; }
+        .cross-icon { color: var(--red-alert); font-size: 1.2rem; margin-top: 2px; }
+        .arrow-icon { color: var(--neon-green); font-size: 1rem; margin-top: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="bg-[#222] text-white text-center py-2 text-xs font-bold uppercase border-b border-gray-800 tracking-wide">
+        <span class="text-red-500 text-[10px]">●</span> LIVE VIRTUAL EVENT: <span id="top-bar-date">Loading...</span>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-16 pb-16 px-4 text-center bg-[url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-black/90"></div> <!-- Dark Overlay -->
+        
+        <div class="relative z-10 max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight uppercase" id="hero-headline">
+                <!-- JS -->
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-4xl mx-auto mb-10 font-medium" id="hero-subtitle">
+                <!-- JS -->
+            </p>
+            
+            <div class="flex flex-col items-center">
+                <a href="#register" class="btn-gold text-xl md:text-2xl px-10 py-4 w-full md:w-auto shadow-xl">
+                    <i class="fas fa-ticket-alt"></i> <span id="hero-cta">GET MY FREE TICKET</span>
+                </a>
+                <p class="text-xs text-gray-400 mt-3 italic" id="hero-spots"></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3-DAY BREAKDOWN (Green Border Cards) -->
+    <section class="py-16 px-4 bg-black">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <p class="text-green-500 font-bold tracking-widest text-sm uppercase mb-2">Three Days. One Product. Clear Steps.</p>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold uppercase text-white">Here's What We'll Do Together</h2>
+            </div>
+
+            <!-- GRID -->
+            <div class="grid md:grid-cols-3 gap-8" id="roadmap-container">
+                <!-- JS Injected -->
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#register" class="btn-gold text-xl px-10 py-3">
+                    <i class="fas fa-ticket-alt"></i> GET MY FREE TICKET
+                </a>
+                <p class="text-[10px] text-gray-500 mt-2">Tickets are first-come, first-served</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILS (White Cards on Black) -->
+    <section class="py-16 px-4 bg-black border-t border-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10">
+                <p class="text-green-500 uppercase tracking-widest text-xs font-bold mb-2">Everything You Need To Know At A Glance</p>
+                <h2 class="text-4xl font-heading font-bold text-white">ALL THE DETAILS</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 text-black">
+                <!-- What -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg border-4 border-transparent hover:border-green-500 transition-colors">
+                    <h3 class="text-4xl font-heading font-bold mb-4">WHAT</h3>
+                    <p class="font-semibold text-gray-800 leading-relaxed" id="details-what"></p>
+                </div>
+                <!-- When -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg border-4 border-transparent hover:border-green-500 transition-colors">
+                    <h3 class="text-4xl font-heading font-bold mb-4">WHEN</h3>
+                    <p class="font-semibold text-gray-800 leading-relaxed" id="details-when"></p>
+                </div>
+                <!-- Where -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg border-4 border-transparent hover:border-green-500 transition-colors">
+                    <h3 class="text-4xl font-heading font-bold mb-4">WHERE</h3>
+                    <p class="font-semibold text-gray-800 leading-relaxed" id="details-where"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON (Green vs Red) -->
+    <section class="py-20 px-4 bg-[#050505]">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <p class="text-green-500 font-bold tracking-widest text-sm uppercase mb-2">Choose Results or Choose To Wait</p>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold uppercase">
+                    The Cost of Doing Nothing <span class="text-green-500">VS</span> Joining The Challenge
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Left (Green) -->
+                <div class="comp-box-green p-8 md:p-10">
+                    <div class="comp-header-green">With This Event</div>
+                    <ul class="space-y-4" id="gain-list">
+                        <!-- JS -->
+                    </ul>
+                </div>
+
+                <!-- Right (Red) -->
+                <div class="comp-box-red p-8 md:p-10">
+                    <div class="comp-header-red">Without This Event</div>
+                    <ul class="space-y-4" id="pain-list">
+                        <!-- JS -->
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#register" class="btn-gold text-xl px-12 py-4">
+                    <i class="fas fa-ticket-alt"></i> GET MY FREE TICKET
+                </a>
+                <p class="text-[10px] text-gray-500 mt-2">Tickets are first-come, first-served</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF / SPEAKERS (Green Border Cards) -->
+    <section class="py-20 px-4 bg-black">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-green-500 font-bold uppercase tracking-widest mb-2">Proof</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-16 text-white">Real People. Real Experts.</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="speakers-container">
+                <!-- JS Injected -->
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="#register" class="btn-gold text-lg px-10 py-3">
+                    <i class="fas fa-ticket-alt"></i> GET MY FREE TICKET
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER REGISTRATION (Green Gradient) -->
+    <section id="register" class="py-24 px-4 bg-gradient-to-b from-[#001a00] to-[#003300] border-t-4 border-green-600 relative">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-green-400 font-bold uppercase tracking-widest mb-4">Important</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6 text-white">Register Below To Lock Your <span class="text-green-500">FREE</span> Ticket</h2>
+            <p class="text-gray-300 mb-12 text-lg italic">After you sign up, check your inbox for confirmation details.</p>
+
+            <div class="bg-black p-1 rounded-3xl inline-block w-full max-w-md">
+                <a href="#register" id="trigger-modal-btn" class="btn-gold w-full py-5 text-xl md:text-2xl rounded-3xl">
+                    <i class="fas fa-ticket-alt"></i> GET MY FREE TICKET
+                </a>
+            </div>
+            <p class="text-[10px] text-gray-400 mt-3 uppercase tracking-widest">Tickets are first-come, first-served</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 text-center text-gray-600 text-xs">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="mb-4 space-x-4 uppercase font-bold">
+                <a href="#" class="hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-white">Terms & Conditions</a>
+            </div>
+            <p class="opacity-50 leading-relaxed">
+                This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
+            </p>
+            <p class="mt-4" id="footer-copy"></p>
+        </div>
+    </footer>
+
+    <!-- MODAL (Registration) -->
+    <div class="modal-overlay" id="questionModalOverlay">
+        <div class="bg-white text-black p-8 md:p-10 max-w-lg w-full rounded-2xl relative mx-4 shadow-2xl">
+            <button id="modalCloseBtn" class="absolute top-4 right-4 text-3xl font-bold text-gray-400 hover:text-red-500">&times;</button>
+            
+            <div id="modal-content-area">
+                <!-- Form will be injected here first, then questions -->
+                <div class="text-center mb-6">
+                    <h3 class="text-3xl font-heading font-bold uppercase">Complete Registration</h3>
+                    <p class="text-gray-600 text-sm mt-2">Enter your details to secure your spot.</p>
+                </div>
+
+                <form id="registrationForm" class="space-y-4">
+                    <input type="text" name="firstName" class="w-full bg-gray-100 border border-gray-300 p-3 rounded-lg font-bold focus:ring-2 focus:ring-green-500 outline-none" placeholder="First Name" required>
+                    <input type="text" name="lastName" class="w-full bg-gray-100 border border-gray-300 p-3 rounded-lg font-bold focus:ring-2 focus:ring-green-500 outline-none" placeholder="Last Name" required>
+                    <input type="email" name="email" class="w-full bg-gray-100 border border-gray-300 p-3 rounded-lg font-bold focus:ring-2 focus:ring-green-500 outline-none" placeholder="Best Email Address" required>
+                    <input type="tel" name="phone" class="w-full bg-gray-100 border border-gray-300 p-3 rounded-lg font-bold focus:ring-2 focus:ring-green-500 outline-none" placeholder="Mobile Number" required>
+                    
+                    <button type="submit" id="formSubmitBtn" class="btn-gold w-full py-4 text-lg mt-4 shadow-md rounded-xl">
+                        SECURE MY TICKET NOW
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIC -->
+    <script>
+        // WAIT FOR CONFIG TO LOAD
+        function waitForConfig(callback) {
+            if (typeof config !== 'undefined') {
+                callback();
+            } else {
+                let attempts = 0;
+                const maxAttempts = 50;
+                const checkConfig = setInterval(() => {
+                    attempts++;
+                    if (typeof config !== 'undefined') {
+                        clearInterval(checkConfig);
+                        callback();
+                    } else if (attempts >= maxAttempts) {
+                        clearInterval(checkConfig);
+                        console.error('Config.js failed to load after 5 seconds');
+                        document.body.innerHTML = '<div style="padding: 50px; text-align: center; color: white;"><h1>Configuration Error</h1><p>Failed to load configuration file. Please refresh the page.</p></div>';
+                    }
+                }, 100);
+            }
+        }
+
+        // SAFE INJECT HELPER
+        function inject(id, content, isHtml = false) {
+            const el = document.getElementById(id);
+            if(el) {
+                if(isHtml) el.innerHTML = content;
+                else el.textContent = content;
+            }
+        }
+
+        // HIDE EMPTY SECTIONS
+        function hideEmptySections() {
+            const sections = {
+                'roadmap-container': config.solutions?.items?.length === 0,
+                'speakers-container': config.speakers?.experts?.length === 0,
+                'gain-list': config.comparison?.expressWay?.points?.length === 0,
+                'pain-list': config.comparison?.painfulWay?.points?.length === 0
+            };
+            
+            Object.keys(sections).forEach(id => {
+                const el = document.getElementById(id);
+                if(el && sections[id]) {
+                    el.closest('section')?.style.setProperty('display', 'none');
+                }
+            });
+        }
+
+        waitForConfig(() => {
+            document.addEventListener('DOMContentLoaded', () => {
+                document.title = config.meta?.pageTitle || 'Event Registration';
+
+                // TOP BAR
+                inject('top-bar-date', config.header?.eventDate || '');
+
+                // HERO
+                inject('hero-headline', config.hero?.headline || '', true);
+                inject('hero-subtitle', config.hero?.subtitle || '', true);
+                inject('hero-cta', config.hero?.ctaText || 'GET MY FREE TICKET');
+                inject('hero-spots', `Only ${config.event?.spotsLeft || 0} <span class='strikethrough'>${config.event?.totalSpots || 0}</span> Spots Available`, true);
+
+                // 3-DAY ROADMAP (Splitting Solutions List into 3 Cards)
+                if(config.solutions?.items && config.solutions.items.length > 0) {
+                    const items = config.solutions.items;
+                    const days = [ 
+                        items.slice(0, Math.ceil(items.length / 3)), 
+                        items.slice(Math.ceil(items.length / 3), Math.ceil(items.length * 2 / 3)), 
+                        items.slice(Math.ceil(items.length * 2 / 3)) 
+                    ].filter(day => day.length > 0);
+                    
+                    const roadmapHtml = days.map((dayItems, i) => `
+                        <div class="day-card p-6">
+                            <div class="day-header">
+                                <h3 class="text-4xl font-black text-[#39FF14] mb-2">DAY ${i+1}</h3>
+                                <div class="flex justify-center items-center gap-2 text-white text-sm font-bold">
+                                    <i class="far fa-calendar-alt"></i> <span>${config.event?.date || 'DATE TBA'}</span>
+                                    <i class="far fa-clock ml-1"></i> <span>${config.event?.time || 'TIME TBA'}</span>
+                                </div>
+                            </div>
+                            <div class="border-t border-gray-800 my-4"></div>
+                            <div class="space-y-3">
+                                ${dayItems.map(item => `
+                                    <div class="white-bubble">
+                                        <i class="fas fa-angle-double-right text-green-600 mt-1"></i>
+                                        <span>${item.replace(/<[^>]*>/g, '')}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `).join('');
+                    inject('roadmap-container', roadmapHtml, true);
+                }
+
+                // DETAILS (White Cards)
+                inject('details-what', config.hero?.subtitle || config.eventDetails?.sectionTitle || '', true);
+                inject('details-when', (config.event?.date || '') + (config.event?.time ? "<br>" + config.event.time : ''));
+                inject('details-where', config.event?.location || '');
+
+                // COMPARISON
+                if(config.comparison?.expressWay?.points) {
+                    inject('gain-list', config.comparison.expressWay.points.map(p => `
+                        <li class="flex items-start gap-3 text-lg">
+                            <i class="fas fa-check-circle text-green-500 mt-1 text-xl"></i>
+                            <span class="font-medium">${p}</span>
+                        </li>
+                    `).join(''), true);
+                }
+                if(config.comparison?.painfulWay?.points) {
+                    inject('pain-list', config.comparison.painfulWay.points.map(p => `
+                        <li class="flex items-start gap-3 text-lg text-gray-300">
+                            <i class="fas fa-times-circle text-red-500 mt-1 text-xl"></i>
+                            <span class="font-medium">${p}</span>
+                        </li>
+                    `).join(''), true);
+                }
+
+                // SPEAKERS (Using Headshot URL)
+                if(config.speakers?.experts && config.speakers.experts.length > 0) {
+                    const speakerHtml = config.speakers.experts.map(exp => `
+                        <div class="proof-card">
+                            <div>
+                                <p class="italic font-serif text-lg mb-4 text-gray-700 leading-relaxed">"${exp.description || ''}"</p>
+                            </div>
+                            <div class="flex items-center gap-4 border-t border-gray-200 pt-4 mt-2">
+                                <img src="${exp.headshotUrl || 'https://via.placeholder.com/150'}" class="w-16 h-16 rounded-full object-cover border-2 border-green-500" alt="${exp.name || ''}">
+                                <div>
+                                    <div class="font-bold text-black uppercase text-sm">${exp.name || ''}</div>
+                                    <div class="text-xs text-gray-500 font-bold uppercase tracking-wide">${exp.title || ''}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                    inject('speakers-container', speakerHtml, true);
+                }
+
+                // FOOTER
+                inject('footer-copy', config.footer?.copyright || '');
+                
+                // Hide empty sections
+                hideEmptySections();
+                
+                // INIT MODAL LOGIC
+                initInteractions();
+            });
+        });
+
+        function initInteractions() {
+            const modal = document.getElementById('questionModalOverlay');
+            const triggerBtn = document.getElementById('trigger-modal-btn'); // Footer button
+            const closeBtn = document.getElementById('modalCloseBtn');
+            const form = document.getElementById('registrationForm');
+            const container = document.getElementById('modal-content-area'); // Where content swaps
+
+            // Open Modal Function
+            function openModal() {
+                modal.style.display = 'flex';
+            }
+
+            // Close Modal
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+                // Reset content if needed
+                location.reload(); // Simple reset for demo, or re-inject form
+            });
+
+            // Footer Trigger
+            triggerBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal();
+            });
+
+            // Main Form Submission (Step 1)
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                // Start Questions
+                startQuestions(data);
+            });
+
+            function startQuestions(userData) {
+                const stepsContainer = document.getElementById('modal-content-area');
+                const collectedAnswers = {};
+                let currentQ = 0;
+
+                function renderQ() {
+                    if(currentQ >= (config.modalQuestions?.length || 0)) {
+                        finish(userData, collectedAnswers);
+                        return;
+                    }
+                    
+                    const q = config.modalQuestions[currentQ];
+                    const escapedQuestion = q.questionText.replace(/'/g, "\\'");
+                    let optionsHtml = q.options.map(opt => {
+                        const escapedText = opt.text.replace(/'/g, "\\'");
+                        return `
+                        <button class="w-full text-left p-4 mb-2 border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-500 transition-all font-bold text-gray-700 flex items-center gap-3 group" onclick="handleAnswer('${q.id}', '${opt.value}')">
+                            <div class="w-5 h-5 rounded-full border-2 border-gray-300 group-hover:border-green-500"></div>
+                            ${opt.text}
+                        </button>
+                    `;
+                    }).join('');
+
+                    stepsContainer.innerHTML = `
+                        <div class="text-center mb-6 animate-fadeIn">
+                            <h4 class="text-xl font-bold mb-4">${q.questionText}</h4>
+                            <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: ${(currentQ + 1) / config.modalQuestions.length * 100}%"></div>
+                            </div>
+                            <div class="space-y-2">
+                                ${optionsHtml}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                window.handleAnswer = (questionId, answerValue) => {
+                    collectedAnswers[questionId] = answerValue;
+                    currentQ++;
+                    renderQ();
+                };
+
+                // Open modal if not already open (from main page form)
+                openModal();
+                renderQ();
+            }
+
+            function finish(userData, collectedAnswers) {
+                const stepsContainer = document.getElementById('modal-content-area');
+                stepsContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fas fa-check-circle text-6xl text-green-500 mb-4 animate-bounce"></i>
+                        <h2 class="text-3xl font-black uppercase mb-2">YOU'RE IN!</h2>
+                        <p class="text-gray-600 mb-6">We've sent your ticket confirmation to <strong>${userData.email}</strong>.</p>
+                        <p class="text-sm text-gray-400">Check your spam folder if you don't see it in 5 minutes.</p>
+                    </div>
+                `;
+                
+                // Get primary agent email
+                const primaryAgentEmail = config.contact?.agents?.[0]?.email || '';
+                
+                // Build questions array in correct format
+                const questions = [];
+                for (const questionId in collectedAnswers) {
+                    if (collectedAnswers.hasOwnProperty(questionId)) {
+                        const answerValue = collectedAnswers[questionId];
+                        const questionObj = config.modalQuestions?.find(q => q.id === questionId);
+                        if (questionObj) {
+                            const optionObj = questionObj.options.find(opt => opt.value === answerValue);
+                            questions.push({
+                                question: questionObj.questionText,
+                                answer: optionObj ? optionObj.text : answerValue
+                            });
+                        }
+                    }
+                }
+                
+                // Build payload matching script.js structure
+                const payload = {
+                    timestamp: new Date().toISOString(),
+                    source: "landing-page",
+                    name: `${userData.firstName || ''} ${userData.lastName || ''}`.trim(),
+                    firstName: userData.firstName || '',
+                    lastName: userData.lastName || '',
+                    email: userData.email || '',
+                    phone: userData.phone || '',
+                    submittedAt: new Date().toISOString(),
+                    eventName: config.event?.title || '',
+                    agentEmail: primaryAgentEmail,
+                    questions: questions,
+                    deploymentInfo: {
+                        tag: config.deploymentInfo?.tag || "",
+                        ghlWebhookUrl: config.deploymentInfo?.ghlWebhookUrl || "",
+                        webhookUrl: config.deploymentInfo?.webhookUrl || "",
+                        facebookPixelId: config.deploymentInfo?.facebookPixelId || "",
+                        followUpBossEmail: config.deploymentInfo?.followUpBossEmail || ""
+                    }
+                };
+                
+                // Determine webhook URL
+                const webhookUrl = (config.webhook?.enabled && config.webhook?.url && config.webhook.url !== "https://hook.us1.make.com/your-webhook-url") 
+                    ? config.webhook.url 
+                    : (config.deploymentInfo?.webhookUrl || '');
+                
+                // Submit to webhook
+                if (webhookUrl) {
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(payload),
+                        mode: 'cors'
+                    }).then(response => {
+                        if (response.ok) {
+                            console.log('Data successfully submitted to webhook');
+                        } else {
+                            console.error('Webhook submission failed:', response.status);
+                        }
+                    }).catch(error => {
+                        console.error('Webhook submission error:', error);
+                    });
+                }
+                
+                // Update spots counter
+                if (config.event && config.event.spotsLeft > 0) {
+                    config.event.spotsLeft--;
+                    inject('hero-spots', `Only ${config.event.spotsLeft} <span class='strikethrough'>${config.event.totalSpots || 0}</span> Spots Available`, true);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
